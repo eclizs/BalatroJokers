@@ -1,0 +1,34 @@
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Models.RelicPools;
+using MegaCrit.Sts2.Core.Rewards;
+using MegaCrit.Sts2.Core.Runs;
+
+namespace BalatroJokers.BalatroJokersCode.Relics;
+
+[Pool(typeof(SharedRelicPool))]
+public class Blueprint() : BalatroJokersRelic
+{
+    public override RelicRarity Rarity => RelicRarity.Rare;
+    public override bool HasUponPickupEffect => true;
+
+    public override bool IsAllowed(IRunState runState)
+    {
+        var playerLastRelic = runState.Players.FirstOrDefault().Relics.LastOrDefault();
+        if (playerLastRelic == null) return false;
+        return playerLastRelic is { ShowCounter: false, DisplayAmount: 0 };
+    }
+
+    public override async Task AfterObtained()
+    {
+        if (Owner.Relics.Count < 2) await RelicCmd.Remove(this);
+
+        var relicToCopy = Owner.Relics[^2];
+        await RewardsCmd.OfferCustom(this.Owner, [
+            (Reward)new RelicReward(relicToCopy, this.Owner)
+        ]);
+        
+        await RelicCmd.Remove(this);
+    }
+}

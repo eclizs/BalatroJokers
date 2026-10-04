@@ -1,3 +1,5 @@
 {
-  
+  "BALATROJOKERS-BARON_POWER.description": "Enemies deal less damage this turn.",
+  "BALATROJOKERS-BARON_POWER.smartDescription": "Enemies deal [blue]{Amount}%[/blue] less damage this turn.",
+  "BALATROJOKERS-BARON_POWER.title": "Baron"
 }
