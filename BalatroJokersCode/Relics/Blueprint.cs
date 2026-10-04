@@ -14,13 +14,6 @@ public class Blueprint() : BalatroJokersRelic
     public override RelicRarity Rarity => RelicRarity.Rare;
     public override bool HasUponPickupEffect => true;
 
-    public override bool IsAllowed(IRunState runState)
-    {
-        var playerLastRelic = runState.Players.FirstOrDefault().Relics.LastOrDefault();
-        if (playerLastRelic == null) return false;
-        return playerLastRelic is { ShowCounter: false, DisplayAmount: 0 };
-    }
-
     public override async Task AfterObtained()
     {
         if (Owner.Relics.Count < 2) await RelicCmd.Remove(this);
