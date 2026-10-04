@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Runs;
@@ -25,8 +26,15 @@ public class Blueprint() : BalatroJokersRelic
         if (Owner.Relics.Count < 2) await RelicCmd.Remove(this);
 
         var relicToCopy = Owner.Relics[^2];
+        ModelId sourceId = relicToCopy.CanonicalInstance.Id;      
+        RelicModel? canonical;
+        canonical = sourceId == ModelId.none ? null : ModelDb.GetByIdOrNull<RelicModel>(sourceId);
+
+        if (canonical == null) await Task.CompletedTask;
+        
+        var newRelic = canonical.ToMutable();
         await RewardsCmd.OfferCustom(this.Owner, [
-            (Reward)new RelicReward(relicToCopy, this.Owner)
+            (Reward)new RelicReward(newRelic, this.Owner)
         ]);
         
         await RelicCmd.Remove(this);
