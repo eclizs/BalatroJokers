@@ -4,5 +4,8 @@
   "BALATROJOKERS-BARON.title": "Baron",
   "BALATROJOKERS-BLUEPRINT.description": "Upon pickup, obtain a copy of your last obtained relic.",
   "BALATROJOKERS-BLUEPRINT.flavor": "",
-  "BALATROJOKERS-BLUEPRINT.title": "Blueprint"
+  "BALATROJOKERS-BLUEPRINT.title": "Blueprint",
+  "BALATROJOKERS-CAMPFIRE.description": "You can now upgrade",
+  "BALATROJOKERS-CAMPFIRE.flavor": "",
+  "BALATROJOKERS-CAMPFIRE.title": "Campfire"
 }
