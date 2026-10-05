@@ -1,11 +1,11 @@
 {
-  "BALATROJOKERS-BARON.description": "Rare cards gain [gold]Retain[/gold]. Enemies deal [blue]5%[/blue] less damage for every rare card in your hand at the end of your turn.",
+  "BALATROJOKERS-BARON.description": "[gold]Rare[/gold] cards gain [gold]Retain[/gold]. Enemies deal [blue]5%[/blue] less damage for every [gold]Rare[/gold] card in your hand at the end of your turn.",
   "BALATROJOKERS-BARON.flavor": "",
   "BALATROJOKERS-BARON.title": "Baron",
   "BALATROJOKERS-BLUEPRINT.description": "Upon pickup, obtain a copy of your last obtained relic.",
   "BALATROJOKERS-BLUEPRINT.flavor": "",
   "BALATROJOKERS-BLUEPRINT.title": "Blueprint",
-  "BALATROJOKERS-CAMPFIRE.description": "You can now upgrade [blue]2[/blue] cards at [gold]Rest Sites[/gold]",
+  "BALATROJOKERS-CAMPFIRE.description": "You can now [gold]Upgrade[/gold] [blue]2[/blue] cards at [gold]Rest Sites[/gold]",
   "BALATROJOKERS-CAMPFIRE.flavor": "",
   "BALATROJOKERS-CAMPFIRE.title": "Campfire"
 }
