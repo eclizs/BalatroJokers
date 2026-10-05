@@ -29,7 +29,5 @@ public class Blueprint() : BalatroJokersRelic
         await RewardsCmd.OfferCustom(this.Owner, [
             (Reward)new RelicReward(newRelic, this.Owner)
         ]);
-        
-        await RelicCmd.Remove(this);
     }
 }
