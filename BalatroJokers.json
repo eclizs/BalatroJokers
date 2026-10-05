@@ -3,7 +3,7 @@
   "name": "Balatro Jokers",
   "author": "eclipse",
   "description": "Slay The Spire 2 mod that adds some jokers from Balatro as relics",
-  "version": "v0.0.0",
+  "version": "v0.1.0",
   "min_game_version": "0.107.0",
   "has_pck": true,
   "has_dll": true,
