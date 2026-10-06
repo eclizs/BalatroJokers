@@ -4,7 +4,9 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.RestSite;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
+using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
@@ -12,14 +14,16 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 public class Campfire() : BalatroJokersRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
-    
 }
 
 [HarmonyPatch(typeof(SmithRestSiteOption), nameof(SmithRestSiteOption.SmithCount), MethodType.Getter)]
 class SmithCountPatch
 {
-    static void Postfix(ref object __result)
+    static void Postfix(ref SmithRestSiteOption __instance,ref object __result)
     {
-        __result = 2;
+        Player owner = (Player) Traverse.Create(__instance).Property("Owner").GetValue();
+
+        bool playerHasCampfire = owner.Relics.OfType<Campfire>().Any();
+        if (playerHasCampfire) __result = 2;
     }
 }
