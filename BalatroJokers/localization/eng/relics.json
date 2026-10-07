@@ -7,5 +7,8 @@
   "BALATROJOKERS-BLUEPRINT.title": "Blueprint",
   "BALATROJOKERS-CAMPFIRE.description": "You can now [gold]Upgrade[/gold] [blue]2[/blue] cards at [gold]Rest Sites[/gold]",
   "BALATROJOKERS-CAMPFIRE.flavor": "",
-  "BALATROJOKERS-CAMPFIRE.title": "Campfire"
+  "BALATROJOKERS-CAMPFIRE.title": "Campfire",
+  "BALATROJOKERS-CREDIT_CARD.description": "Go up to [blue]{Gold}[/blue] [gold]Gold[/gold] in debt.",
+  "BALATROJOKERS-CREDIT_CARD.flavor": "",
+  "BALATROJOKERS-CREDIT_CARD.title": "Credit Card"
 }
