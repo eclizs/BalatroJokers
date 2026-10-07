@@ -7,8 +7,11 @@ using MegaCrit.Sts2.Core.Entities.Gold;
 using MegaCrit.Sts2.Core.Entities.Merchant;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.RelicPools;
+using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
@@ -78,5 +81,19 @@ class EnoughGoldPatch
 
         if (player is not null && CreditCard.IsActive(player))
             __result = __instance.Cost <= player.Gold + 100;
+    }
+}
+
+[HarmonyPatch(typeof(NMerchantInventory), nameof(NMerchantInventory.Initialize))]
+static class MerchantInventoryInitializePatch
+{
+    static void Prefix(
+        MerchantInventory inventory,
+        ref MerchantDialogueSet dialogue)
+    {
+        if (!CreditCard.IsActive(inventory.Player))
+            return;
+        
+        dialogue = MerchantDialogueSet.CreateFromLocStrings((IEnumerable<LocString>) LocManager.Instance.GetTable("merchant_room").GetLocStringsWithPrefix("CREDIT-CARD.MERCHANT.talk."));
     }
 }
