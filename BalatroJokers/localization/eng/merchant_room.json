@@ -1,5 +1,5 @@
 {
-  "MERCHANT.talk.purchaseFailureGold.line1": "Are you sure your debts don't accrue interests?",
+  "MERCHANT.talk.purchaseFailureGold.line1": "Are you sure your debts don't accrue interest?",
   "MERCHANT.talk.purchaseFailureGold.line2": "[sine]This [jitter]really[/jitter] isn't a charity.[/sine]",
   "MERCHANT.talk.purchaseFailureGold.line3": "Come back with a better credit card.",
   "MERCHANT.talk.purchaseFailureGold.line4": "Don't push your luck, buddy. You're already in [jitter]debt[/jitter]."
