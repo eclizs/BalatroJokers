@@ -10,5 +10,8 @@
   "BALATROJOKERS-CAMPFIRE.title": "Campfire",
   "BALATROJOKERS-CREDIT_CARD.description": "Go up to [blue]{Gold}[/blue] [gold]Gold[/gold] in debt.",
   "BALATROJOKERS-CREDIT_CARD.flavor": "",
-  "BALATROJOKERS-CREDIT_CARD.title": "Credit Card"
+  "BALATROJOKERS-CREDIT_CARD.title": "Credit Card",
+  "BALATROJOKERS-GOLDEN_TICKET.description": "Whenever you play a [gold]Rare[/gold] card, gain [blue]{Gold}[/blue] [gold]Gold[/gold].",
+  "BALATROJOKERS-GOLDEN_TICKET.flavor": "",
+  "BALATROJOKERS-GOLDEN_TICKET.title": "Golden Ticket"
 }
