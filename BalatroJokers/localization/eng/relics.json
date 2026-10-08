@@ -19,5 +19,8 @@
   "BALATROJOKERS-MYSTIC_SUMMIT.title": "Mystic Summit",
   "BALATROJOKERS-D_N_A.description": "The first [blue]{CombatThreshold}[/blue] times each act you end your turn having played only [blue]{CardThreshold}[/blue] card, add a permanent copy of it into your [gold]Deck[/gold] and put it into your [gold]Hand[/gold] at the start of your next turn.",
   "BALATROJOKERS-D_N_A.flavor": "",
-  "BALATROJOKERS-D_N_A.title": "DNA"
+  "BALATROJOKERS-D_N_A.title": "DNA",
+  "BALATROJOKERS-BRAINSTORM.description": "Upon pickup, obtain a copy of your starter relic.",
+  "BALATROJOKERS-BRAINSTORM.flavor": "",
+  "BALATROJOKERS-BRAINSTORM.title": "Brainstorm"
 }
