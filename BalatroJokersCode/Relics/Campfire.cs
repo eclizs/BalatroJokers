@@ -1,6 +1,5 @@
 using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
-using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.RestSite;
@@ -29,17 +28,5 @@ public class Campfire() : BalatroJokersRelic
     {
         this.Status = room is RestSiteRoom ? RelicStatus.Active : RelicStatus.Normal;
         return Task.CompletedTask;
-    }
-}
-
-[HarmonyPatch(typeof(SmithRestSiteOption), nameof(SmithRestSiteOption.SmithCount), MethodType.Getter)]
-class SmithCountPatch
-{
-    static void Postfix(ref SmithRestSiteOption __instance,ref object __result)
-    {
-        Player owner = (Player) Traverse.Create(__instance).Property("Owner").GetValue();
-
-        bool playerHasCampfire = owner.Relics.OfType<Campfire>().Any();
-        if (playerHasCampfire) __result = 2;
     }
 }
