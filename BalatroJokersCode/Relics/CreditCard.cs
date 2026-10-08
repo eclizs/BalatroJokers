@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
