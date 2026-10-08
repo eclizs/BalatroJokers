@@ -3,8 +3,6 @@ using System.Reflection.Emit;
 using BalatroJokers.BalatroJokersCode.Relics;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Events;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Events;
 
