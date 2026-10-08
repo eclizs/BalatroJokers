@@ -14,7 +14,7 @@
   "BALATROJOKERS-GOLDEN_TICKET.description": "Whenever you play a [gold]Rare[/gold] card, gain [blue]{Gold}[/blue] [gold]Gold[/gold].",
   "BALATROJOKERS-GOLDEN_TICKET.flavor": "",
   "BALATROJOKERS-GOLDEN_TICKET.title": "Golden Ticket",
-  "BALATROJOKERS-MYSTIC_SUMMIT.description": "Whenever you shuffle your [gold]Draw Pile[/gold], gain [blue]{VigorPower}[/blue] [gold]Vigor[/gold].",
+  "BALATROJOKERS-MYSTIC_SUMMIT.description": "While there are no cards in your [gold]Draw Pile[/gold], gain [blue]{StrengthPower}[/blue] [gold]Strength[/gold] and [blue]{DexterityPower}[/blue] [gold]Dexterity[/gold].",
   "BALATROJOKERS-MYSTIC_SUMMIT.flavor": "",
   "BALATROJOKERS-MYSTIC_SUMMIT.title": "Mystic Summit",
   "BALATROJOKERS-D_N_A.description": "The first [blue]{CombatThreshold}[/blue] times each act you end your turn having played only [blue]{CardThreshold}[/blue] card, add a permanent copy of it into your [gold]Deck[/gold] and put it into your [gold]Hand[/gold] at the start of your next turn.",
