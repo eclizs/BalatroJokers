@@ -17,7 +17,7 @@
   "BALATROJOKERS-MYSTIC_SUMMIT.description": "Whenever you shuffle your [gold]Draw Pile[/gold], gain [blue]{VigorPower}[/blue] [gold]Vigor[/gold].",
   "BALATROJOKERS-MYSTIC_SUMMIT.flavor": "",
   "BALATROJOKERS-MYSTIC_SUMMIT.title": "Mystic Summit",
-  "BALATROJOKERS-D_N_A.description": "The first two times each act you end your turn having played only [blue]{CardThreshold}[/blue] card, add a permanent copy of it to your [gold]Deck[/gold] and put it to your [gold]Hand[/gold] at the start of your next turn.",
+  "BALATROJOKERS-D_N_A.description": "The first two times each act you end your turn having played only [blue]{CardThreshold}[/blue] card, add a permanent copy of it to your [gold]Deck[/gold] and put it into your [gold]Hand[/gold] at the start of your next turn.",
   "BALATROJOKERS-D_N_A.flavor": "",
   "BALATROJOKERS-D_N_A.title": "DNA"
 }
