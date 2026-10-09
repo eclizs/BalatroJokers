@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdqooshr4mmuf"
-path="res://.godot/imported/baron.png-1b6c29a908d51f8f711a8431225d6429.ctex"
+path="res://.godot/imported/baron_power.png-a2ca205f5b0ab59f57baff02bfdf99b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BalatroJokers/images/powers/big/baron.png"
-dest_files=["res://.godot/imported/baron.png-1b6c29a908d51f8f711a8431225d6429.ctex"]
+source_file="res://BalatroJokers/images/powers/big/baron_power.png"
+dest_files=["res://.godot/imported/baron_power.png-a2ca205f5b0ab59f57baff02bfdf99b4.ctex"]
 
 [params]
 
