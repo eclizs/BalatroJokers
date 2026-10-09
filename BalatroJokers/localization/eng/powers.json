@@ -1,5 +1,8 @@
 {
   "BALATROJOKERS-BARON_POWER.description": "Enemies deal less damage this turn.",
   "BALATROJOKERS-BARON_POWER.smartDescription": "Enemies deal [blue]{Amount}%[/blue] less damage this turn.",
-  "BALATROJOKERS-BARON_POWER.title": "Baron"
+  "BALATROJOKERS-BARON_POWER.title": "Baron",
+  "BALATROJOKERS-MADNESS_POWER.description": "The first attack each turn deals additional damage.",
+  "BALATROJOKERS-MADNESS_POWER.smartDescription": "The first attack each turn deals [blue]{Amount}%[/blue] additional damage.",
+  "BALATROJOKERS-MADNESS_POWER.title": "Madness"
 }

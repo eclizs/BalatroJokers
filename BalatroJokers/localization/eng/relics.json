@@ -22,5 +22,8 @@
   "BALATROJOKERS-D_N_A.title": "DNA",
   "BALATROJOKERS-BRAINSTORM.description": "Upon pickup, obtain a copy of your starter relic.",
   "BALATROJOKERS-BRAINSTORM.flavor": "",
-  "BALATROJOKERS-BRAINSTORM.title": "Brainstorm"
+  "BALATROJOKERS-BRAINSTORM.title": "Brainstorm",
+  "BALATROJOKERS-MADNESS.description": "The first attack each turn deals [blue]{MadnessPower}%[/blue] additional damage. Whenever you kill an [gold]Elite[/gold], increase the damage by an additional [blue]{AdditionalPercentage}%[/blue] and remove a random relic.",
+  "BALATROJOKERS-MADNESS.flavor": "",
+  "BALATROJOKERS-MADNESS.title": "Madness"
 }
