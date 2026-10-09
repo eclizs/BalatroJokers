@@ -25,5 +25,8 @@
   "BALATROJOKERS-BRAINSTORM.title": "Brainstorm",
   "BALATROJOKERS-MADNESS.description": "The first attack each turn deals [blue]{MadnessPower}%[/blue] additional damage. Whenever you kill an [gold]Elite[/gold], increase the damage by an additional [blue]{AdditionalPercentage}%[/blue] and remove a random relic.",
   "BALATROJOKERS-MADNESS.flavor": "",
-  "BALATROJOKERS-MADNESS.title": "Madness"
+  "BALATROJOKERS-MADNESS.title": "Madness",
+  "BALATROJOKERS-BURNT_JOKER.description": "Whenever you discard a card during your turn, [gold]Upgrade[/gold] it for the remainder of combat.",
+  "BALATROJOKERS-BURNT_JOKER.flavor": "",
+  "BALATROJOKERS-BURNT_JOKER.title": "Burnt Joker"
 }
