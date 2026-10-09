@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rewards;
+using MegaCrit.Sts2.Core.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
@@ -15,6 +16,11 @@ public class Brainstorm() : BalatroJokersRelic
         RelicRarity.Rare;
 
     public override bool HasUponPickupEffect => true;
+
+    public override bool IsAllowed(IRunState runState)
+    {
+        return runState.CurrentActIndex >= 1;
+    }
 
     public override async Task AfterObtained()
     {
