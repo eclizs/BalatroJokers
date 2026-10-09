@@ -127,11 +127,6 @@ public class MysticSummit() : BalatroJokersRelic
         await this.ChangePowerStatus();
     }
 
-    public override async Task AfterRoomEntered(AbstractRoom room)
-    {
-        if (room is CombatRoom) await this.ChangePowerStatus();
-    }
-
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if(side == CombatSide.Player) await this.ChangePowerStatus();
