@@ -111,7 +111,7 @@ public class DNA() : BalatroJokersRelic
             CardModel? addCard = this.Owner.Creature.CombatState?.CreateCard(lastCardPlayed.CanonicalInstance, this.Owner);
             if(addCard == null) return;
             if (lastCardPlayed.IsUpgraded) CardCmd.Upgrade(addCard);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(addCard, PileType.Hand, this.Owner));
+            await CardPileCmd.AddGeneratedCardToCombat(addCard, PileType.Hand, this.Owner);
             
             this.CombatsLeft--;
             this.InvokeDisplayAmountChanged();
