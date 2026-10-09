@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using BaseLib.Utils;
 using BalatroJokers.BalatroJokersCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
