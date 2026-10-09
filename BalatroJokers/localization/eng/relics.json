@@ -28,5 +28,8 @@
   "BALATROJOKERS-MADNESS.title": "Madness",
   "BALATROJOKERS-BURNT_JOKER.description": "Whenever you discard a card during your turn, [gold]Upgrade[/gold] it for the remainder of combat.",
   "BALATROJOKERS-BURNT_JOKER.flavor": "",
-  "BALATROJOKERS-BURNT_JOKER.title": "Burnt Joker"
+  "BALATROJOKERS-BURNT_JOKER.title": "Burnt Joker",
+  "BALATROJOKERS-DRIVERS_LICENSE.description": "If you have at least [blue]{CardMinimum}[/blue] [gold]Enchanted[/gold] cards in your deck, start each combat with [blue]{StrengthPower}[/blue] [gold]Strength[/gold] and [blue]{DexterityPower}[/blue] [gold]Dexterity[/gold].",
+  "BALATROJOKERS-DRIVERS_LICENSE.flavor": "",
+  "BALATROJOKERS-DRIVERS_LICENSE.title": "Driver's License"
 }
