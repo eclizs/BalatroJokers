@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BalatroJokers.BalatroJokersCode.Powers;
 
-public sealed class BaronPower() : BalatroJokersPower
+public class BaronPower() : BalatroJokersPower
 {
     public override PowerType Type => PowerType.Buff;
 
