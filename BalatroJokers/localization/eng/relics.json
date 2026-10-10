@@ -37,5 +37,8 @@
   "BALATROJOKERS-HALF_JOKER.title": "Half Joker",
   "BALATROJOKERS-THE_DUO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your hand, deal double damage.",
   "BALATROJOKERS-THE_DUO.flavor": "",
-  "BALATROJOKERS-THE_DUO.title": "The Duo"
+  "BALATROJOKERS-THE_DUO.title": "The Duo",
+  "BALATROJOKERS-THE_TRIO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your hand, deal triple damage.",
+  "BALATROJOKERS-THE_TRIO.flavor": "",
+  "BALATROJOKERS-THE_TRIO.title": "The Trio"
 }
