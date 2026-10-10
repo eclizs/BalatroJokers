@@ -7,5 +7,8 @@
   "BALATROJOKERS-MADNESS_POWER.title": "Madness",
   "BALATROJOKERS-TRIPLE_DAMAGE_POWER.description": "This turn, Attacks deal triple damage",
   "BALATROJOKERS-TRIPLE_DAMAGE_POWER.smartDescription": "{Amount:plural:This turn|For the next [blue]{}[/blue] turns}, Attacks deal triple damage.",
-  "BALATROJOKERS-TRIPLE_DAMAGE_POWER.title": "Triple Damage"
+  "BALATROJOKERS-TRIPLE_DAMAGE_POWER.title": "Triple Damage",
+  "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.description": "This turn, Attacks deal quadruple damage",
+  "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.smartDescription": "{Amount:plural:This turn|For the next [blue]{}[/blue] turns}, Attacks deal quadruple damage.",
+  "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.title": "Quadruple Damage"
 }
