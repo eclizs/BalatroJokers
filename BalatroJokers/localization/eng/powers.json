@@ -4,5 +4,8 @@
   "BALATROJOKERS-BARON_POWER.title": "Baron",
   "BALATROJOKERS-MADNESS_POWER.description": "The first attack each turn deals additional damage.",
   "BALATROJOKERS-MADNESS_POWER.smartDescription": "The first attack each turn deals [blue]{Amount}%[/blue] additional damage.",
-  "BALATROJOKERS-MADNESS_POWER.title": "Madness"
+  "BALATROJOKERS-MADNESS_POWER.title": "Madness",
+  "BALATROJOKERS-TRIPLE_DAMAGE_POWER.description": "This turn, Attacks deal triple damage",
+  "BALATROJOKERS-TRIPLE_DAMAGE_POWER.smartDescription": "{Amount:plural:This turn|For the next [blue]{}[/blue] turns}, Attacks deal triple damage.",
+  "BALATROJOKERS-TRIPLE_DAMAGE_POWER.title": "Triple Damage"
 }
