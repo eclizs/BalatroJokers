@@ -34,5 +34,8 @@
   "BALATROJOKERS-DRIVERS_LICENSE.title": "Driver's License",
   "BALATROJOKERS-HALF_JOKER.description": "Whenever you play [blue]{CardThreshold}[/blue] or fewer cards during your turn, deal [blue]{Damage}[/blue] damage to ALL enemies at the end of your turn.",
   "BALATROJOKERS-HALF_JOKER.flavor": "",
-  "BALATROJOKERS-HALF_JOKER.title": "Half Joker"
+  "BALATROJOKERS-HALF_JOKER.title": "Half Joker",
+  "BALATROJOKERS-THE_DUO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your hand, deal double damage.",
+  "BALATROJOKERS-THE_DUO.flavor": "",
+  "BALATROJOKERS-THE_DUO.title": "The Duo"
 }
