@@ -35,10 +35,13 @@
   "BALATROJOKERS-HALF_JOKER.description": "Whenever you play [blue]{CardThreshold}[/blue] or fewer cards during your turn, deal [blue]{Damage}[/blue] damage to ALL enemies at the end of your turn.",
   "BALATROJOKERS-HALF_JOKER.flavor": "",
   "BALATROJOKERS-HALF_JOKER.title": "Half Joker",
-  "BALATROJOKERS-THE_DUO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your hand, deal double damage.",
+  "BALATROJOKERS-THE_DUO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your [gold]Hand[/gold], deal double damage.",
   "BALATROJOKERS-THE_DUO.flavor": "",
   "BALATROJOKERS-THE_DUO.title": "The Duo",
-  "BALATROJOKERS-THE_TRIO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your hand, deal triple damage.",
+  "BALATROJOKERS-THE_TRIO.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your [gold]Hand[/gold], deal triple damage.",
   "BALATROJOKERS-THE_TRIO.flavor": "",
-  "BALATROJOKERS-THE_TRIO.title": "The Trio"
+  "BALATROJOKERS-THE_TRIO.title": "The Trio",
+  "BALATROJOKERS-THE_FAMILY.description": "Whenever you have [blue]{Cards}[/blue] copies of the same card in your [gold]Hand[/gold], deal quadruple damage.",
+  "BALATROJOKERS-THE_FAMILY.flavor": "",
+  "BALATROJOKERS-THE_FAMILY.title": "The Family"
 }
