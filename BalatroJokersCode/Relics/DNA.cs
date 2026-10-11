@@ -29,7 +29,7 @@ public class DNA() : BalatroJokersRelic
 
     public override int DisplayAmount => this._combatsLeft;
 
-    public int CardsPlayedThisTurn
+    private int CardsPlayedThisTurn
     {
         get => this._cardsPlayedThisTurn;
         set
@@ -54,8 +54,8 @@ public class DNA() : BalatroJokersRelic
             this.Status = RelicStatus.Disabled;
         }
     }
-    
-    public CardModel? LastCardPlayed
+
+    private CardModel? LastCardPlayed
     {
         get => this._lastCardPlayed;
         set
