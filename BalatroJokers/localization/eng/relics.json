@@ -43,5 +43,11 @@
   "BALATROJOKERS-THE_TRIO.title": "The Trio",
   "BALATROJOKERS-THE_FAMILY.description": "Whenever you have exactly [blue]{Cards}[/blue] of the same card in your [gold]Hand[/gold], deal quadruple damage.",
   "BALATROJOKERS-THE_FAMILY.flavor": "",
-  "BALATROJOKERS-THE_FAMILY.title": "The Family"
+  "BALATROJOKERS-THE_FAMILY.title": "The Family",
+  "BALATROJOKERS-THE_ORDER.description": "Whenever you play an [gold]Attack[/gold], [gold]Skill[/gold], and [gold]Power[/gold] in that order in a single turn, deal triple damage.",
+  "BALATROJOKERS-THE_ORDER.flavor": "",
+  "BALATROJOKERS-THE_ORDER.title": "The Order",
+  "BALATROJOKERS-THE_TRIBE.description": "Whenever you play [blue]{Cards}[/blue] {Cards:plural:card|cards} of the same type or rarity in a row in a single turn, deal double damage.",
+  "BALATROJOKERS-THE_TRIBE.flavor": "",
+  "BALATROJOKERS-THE_TRIBE.title": "The Tribe"
 }
