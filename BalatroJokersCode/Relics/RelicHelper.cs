@@ -41,7 +41,7 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
             .GetPile(Owner)
             .Cards
             .GroupBy(card => card.CanonicalInstance)
-            .Any(group => group.Count() >= RequiredCopies);
+            .Any(group => group.Count() == RequiredCopies);
     }
 
     private async Task ApplyPower()
