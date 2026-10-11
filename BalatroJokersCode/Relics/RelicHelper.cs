@@ -46,6 +46,8 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
 
     private async Task ApplyPower()
     {
+        if (this.PowerApplied)
+            return;
         PowerApplied = true;
 
         await PowerCmd.Apply<TPower>(
@@ -58,6 +60,8 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
 
     private async Task RemovePower()
     {
+        if (!this.PowerApplied)
+            return;
         PowerApplied = false;
         await PowerCmd.Remove(Owner.Creature.GetPower<TPower>());
     }
