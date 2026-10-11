@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byoxmx5moixtk"
-path="res://.godot/imported/d_n_a.png-ead01c0d53850e190088bc0a9bc8fe80.ctex"
+path="res://.godot/imported/dna.png-a0440932e070919f5b3800dc9828384b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BalatroJokers/images/relics/big/d_n_a.png"
-dest_files=["res://.godot/imported/d_n_a.png-ead01c0d53850e190088bc0a9bc8fe80.ctex"]
+source_file="res://BalatroJokers/images/relics/big/dna.png"
+dest_files=["res://.godot/imported/dna.png-a0440932e070919f5b3800dc9828384b.ctex"]
 
 [params]
 
