@@ -77,6 +77,7 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         }
         else if (HasRequiredCopies())
         {
+            this.Flash();
             await ApplyPower();
         }
     }
