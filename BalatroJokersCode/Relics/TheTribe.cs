@@ -36,6 +36,7 @@ public class TheTribe() : BalatroJokersRelic
         {
             this.AssertMutable();
             _cardsPlayed = value;
+            this.InvokeDisplayAmountChanged();
         }
     }
     

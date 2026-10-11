@@ -29,6 +29,7 @@ public class TheOrder() : BalatroJokersRelic
         {
             this.AssertMutable();
             _cardsPlayedInOrder = value;
+            this.InvokeDisplayAmountChanged();
         }
     }
     
