@@ -49,7 +49,7 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         if (this.PowerApplied)
             return;
         PowerApplied = true;
-
+        this.Flash();
         await PowerCmd.Apply<TPower>(
             new ThrowingPlayerChoiceContext(),
             Owner.Creature,
@@ -77,7 +77,6 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         }
         else if (HasRequiredCopies())
         {
-            this.Flash();
             await ApplyPower();
         }
     }
