@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Models.RelicPools;
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class DNA() : BalatroJokersRelic
+public class Dna() : BalatroJokersRelic
 {
     private int _cardsPlayedThisTurn;
     private int _combatsLeft = 2;
