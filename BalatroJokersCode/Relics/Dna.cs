@@ -117,7 +117,6 @@ public class Dna() : BalatroJokersRelic
             await CardPileCmd.AddGeneratedCardToCombat(addCard, PileType.Hand, this.Owner);
             
             this.CombatsLeft--;
-            this.InvokeDisplayAmountChanged();
         }
         this.CardsPlayedThisTurn = 0;
         this.RefreshCounter();
