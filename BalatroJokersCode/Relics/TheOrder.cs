@@ -51,7 +51,7 @@ public class TheOrder() : BalatroJokersRelic
     {
         if (!participants.Contains<Creature>(this.Owner.Creature))
             return Task.CompletedTask;
-        MainFile.Logger.Info("ShowCounter is " + (ShowCounter ? "active" : "inactive") + " with the counter being: " + this.DisplayAmount);
+
         this.CardsPlayedInOrder = 0;
         this.PowerApplied = false;
         return Task.CompletedTask;
@@ -59,8 +59,6 @@ public class TheOrder() : BalatroJokersRelic
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MainFile.Logger.Info("ShowCounter is " + (ShowCounter ? "active" : "inactive") + " with the counter being: " + this.DisplayAmount);
-
         if (cardPlay.Card.Owner != this.Owner || !CombatManager.Instance.IsInProgress)
             return;
         switch (CardsPlayedInOrder)

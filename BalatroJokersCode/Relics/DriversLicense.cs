@@ -93,16 +93,8 @@ public class DriversLicense() : BalatroJokersRelic
         this.RefreshStatus();
         if (!CombatManager.Instance.IsInProgress)
             return;
-        if (this.DeckHasEnoughEnchantedCards())
-        {
-            MainFile.Logger.Info("Deck has enough enchanted cards!");
-            await this.ApplyPowers();
-        }
-        else
-        {
-            MainFile.Logger.Info("Deck does not have enough enchanted cards!");
-            await this.RemovePowers();
-        }
+        if (this.DeckHasEnoughEnchantedCards()) await this.ApplyPowers();
+        else await this.RemovePowers();
     }
 
     private bool DeckHasEnoughEnchantedCards()
@@ -113,7 +105,6 @@ public class DriversLicense() : BalatroJokersRelic
         {
             if (card.Enchantment != null) count++;
         }
-        MainFile.Logger.Info("Number of enchanted cards: " + count);
         return count >= DynamicVars["CardMinimum"].BaseValue;
     }
     

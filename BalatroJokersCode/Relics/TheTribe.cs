@@ -81,7 +81,7 @@ public class TheTribe() : BalatroJokersRelic
     {
         if (!participants.Contains<Creature>(this.Owner.Creature))
             return Task.CompletedTask;
-        MainFile.Logger.Info("ShowCounter is " + (ShowCounter ? "active" : "inactive") + " with the counter being: " + this.DisplayAmount);
+
         this.CardsPlayed = 0;
         this.CardTypeToPlay = CardType.None;
         this.CardRarityToPlay = CardRarity.None;
@@ -91,31 +91,18 @@ public class TheTribe() : BalatroJokersRelic
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MainFile.Logger.Info("ShowCounter is " + (ShowCounter ? "active" : "inactive") + " with the counter being: " + this.DisplayAmount);
-
         if (cardPlay.Card.Owner != this.Owner || !CombatManager.Instance.IsInProgress)
             return;
 
         if (cardPlay.Card.Rarity == this.CardRarityToPlay || cardPlay.Card.Type == this.CardTypeToPlay)
         {
             this.CardsPlayed++;
-            if (cardPlay.Card.Rarity == this.CardRarityToPlay) MainFile.Logger.Info("card of the same rarity was played!");
-            else if (cardPlay.Card.Type == this.CardTypeToPlay) MainFile.Logger.Info("card of the same type was played!");
         }
         else
         {
             this.CardsPlayed = 1;
             this.CardTypeToPlay = cardPlay.Card.Type;
-            if (cardPlay.Card.Type != this.CardTypeToPlay)
-            {
-                MainFile.Logger.Info("a different card type was played!");
-            }
-            
             this.CardRarityToPlay = cardPlay.Card.Rarity;
-            if (cardPlay.Card.Rarity != this.CardRarityToPlay)
-            {
-                MainFile.Logger.Info("a different card rarity was played!");
-            }
         }
 
         if (CardsPlayed == 3)

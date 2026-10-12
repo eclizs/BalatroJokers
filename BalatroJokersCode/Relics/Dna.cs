@@ -50,7 +50,6 @@ public class Dna() : BalatroJokersRelic
             this.InvokeDisplayAmountChanged();
             if (!this.IsUsedUp)
                 return;
-            MainFile.Logger.Info("DNA is disabled for this act!");
             this.Status = RelicStatus.Disabled;
         }
     }

@@ -28,9 +28,7 @@ public class BaronPower() : BalatroJokersPower
         {
             if (card.Rarity == CardRarity.Rare) dmgReductionAmt += 0.05M;
         }
-
-        MainFile.Logger.Info("ModifyDamageMultiplicative:percentage amount:" + dmgReductionAmt);
-        MainFile.Logger.Info("ModifyDamageMultiplicative:final dmg percentage:" + (1M - dmgReductionAmt));
+        
         return target != this.Owner || !props.IsPoweredAttack() ? 1M : (1M - dmgReductionAmt);
     }
     
