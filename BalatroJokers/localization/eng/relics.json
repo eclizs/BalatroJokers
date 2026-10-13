@@ -49,5 +49,11 @@
   "BALATROJOKERS-THE_ORDER.title": "The Order",
   "BALATROJOKERS-THE_TRIBE.description": "Whenever you play [blue]{Cards}[/blue] {Cards:plural:card|cards} of the same type or rarity in a row in a single turn, deal double damage.",
   "BALATROJOKERS-THE_TRIBE.flavor": "",
-  "BALATROJOKERS-THE_TRIBE.title": "The Tribe"
+  "BALATROJOKERS-THE_TRIBE.title": "The Tribe",
+  "BALATROJOKERS-SPLASH.description": "At the end of your turn, deal damage equal to the amount of cards played this turn to a random enemy.",
+  "BALATROJOKERS-SPLASH.flavor": "",
+  "BALATROJOKERS-SPLASH.title": "Splash",
+  "BALATROJOKERS-ASTRONOMER.description": "Whenever you enter a shop room, a random card, relic, and potion from the [gold]Merchant[/gold] becomes free.",
+  "BALATROJOKERS-ASTRONOMER.flavor": "",
+  "BALATROJOKERS-ASTRONOMER.title": "Astronomer"
 }
