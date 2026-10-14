@@ -23,8 +23,7 @@ public class Astronomer() : BalatroJokersRelic
         _populatedInventory = inventory;
         _freeEntries.Clear();
 
-        AddRandom(inventory.CharacterCardEntries);
-        AddRandom(inventory.ColorlessCardEntries);
+        AddRandom(Owner.PlayerRng.Shops.NextInt(7) < 5 ? inventory.CharacterCardEntries : inventory.ColorlessCardEntries);
         AddRandom(inventory.RelicEntries);
         AddRandom(inventory.PotionEntries);
     }
@@ -40,10 +39,7 @@ public class Astronomer() : BalatroJokersRelic
 
     public override Task AfterRoomEntered(AbstractRoom room)
     {
-        if (room is MerchantRoom)
-        {
-            this.Flash();
-        }
+        if (room is MerchantRoom) this.Flash();
         return Task.CompletedTask;
     }
 

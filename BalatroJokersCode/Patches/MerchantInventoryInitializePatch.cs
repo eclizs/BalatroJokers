@@ -13,10 +13,7 @@ static class MerchantInventoryInitializePatch
         MerchantInventory inventory,
         ref MerchantDialogueSet dialogue)
     {
-        inventory.Player.Relics
-            .OfType<Astronomer>()
-            .FirstOrDefault()
-            ?.PopulateFreeEntries(inventory);
+        inventory.Player.Relics.OfType<Astronomer>().FirstOrDefault()?.PopulateFreeEntries(inventory);
         
         if (!CreditCard.IsActive(inventory.Player))
             return;
