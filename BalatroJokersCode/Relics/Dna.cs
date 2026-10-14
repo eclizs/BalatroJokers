@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
@@ -19,7 +20,8 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 public class Dna() : BalatroJokersRelic
 {
     private int _cardsPlayedThisTurn;
-    private int _combatsLeft = 2;
+    private int _combatThreshold = 2;
+    private int _combatsLeft;
     private CardModel? _lastCardPlayed;
     public override RelicRarity Rarity => RelicRarity.Rare;
     
@@ -46,7 +48,7 @@ public class Dna() : BalatroJokersRelic
         {
             this.AssertMutable();
             this._combatsLeft = value;
-            this.DynamicVars["Combats"].BaseValue = this._combatsLeft;
+            this.DynamicVars["CombatsLeft"].BaseValue = this._combatsLeft;
             this.InvokeDisplayAmountChanged();
             if (!this.IsUsedUp)
                 return;
@@ -70,9 +72,9 @@ public class Dna() : BalatroJokersRelic
         {
             return new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
             {
-                new DynamicVar("CombatThreshold", 2M),
+                new DynamicVar("CombatThreshold", this._combatThreshold),
                 new DynamicVar("CardThreshold", 1M),
-                new DynamicVar("Combats", this.CombatsLeft)
+                new DynamicVar("CombatsLeft", this.CombatsLeft)
             });
         }
     }
@@ -123,7 +125,13 @@ public class Dna() : BalatroJokersRelic
 
     public override Task AfterActEntered()
     {
-        this.CombatsLeft = 2;
+        this.CombatsLeft = this._combatThreshold;
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterObtained()
+    {
+        this.CombatsLeft = this._combatThreshold;
         return Task.CompletedTask;
     }
 }

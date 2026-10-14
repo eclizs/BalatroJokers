@@ -17,7 +17,7 @@
   "BALATROJOKERS-MYSTIC_SUMMIT.description": "While there are no cards in your [gold]Draw Pile[/gold], gain [blue]{StrengthPower}[/blue] [gold]Strength[/gold] and [blue]{DexterityPower}[/blue] [gold]Dexterity[/gold].",
   "BALATROJOKERS-MYSTIC_SUMMIT.flavor": "",
   "BALATROJOKERS-MYSTIC_SUMMIT.title": "Mystic Summit",
-  "BALATROJOKERS-DNA.description": "The first [blue]{CombatThreshold}[/blue] times each act you end your turn having played only [blue]{CardThreshold}[/blue] card, add a permanent copy of it into your [gold]Deck[/gold] and put it into your [gold]Hand[/gold] at the start of your next turn.",
+  "BALATROJOKERS-DNA.description": "The first {CombatThreshold:plural:time|[blue]{CombatThreshold}[/blue] times} each act you end your turn having played only [blue]{CardThreshold}[/blue] card, add a permanent copy of it into your [gold]Deck[/gold] and put it into your [gold]Hand[/gold] at the start of your next turn.",
   "BALATROJOKERS-DNA.flavor": "",
   "BALATROJOKERS-DNA.title": "DNA",
   "BALATROJOKERS-BRAINSTORM.description": "Upon pickup, obtain {StarterRelic.StringValue:cond:[gold]{StarterRelic}[/gold]|a copy of your starter [gold]Relic[/gold]}.",
