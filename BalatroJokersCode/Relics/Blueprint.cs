@@ -35,7 +35,11 @@ public class Blueprint() : BalatroJokersRelic
 
     public override async Task AfterObtained()
     {
-        if (Owner.Relics.Count < 2) await RelicCmd.Remove(this);
+        if (Owner.Relics.Count < 2)
+        {
+            await RelicCmd.Remove(this);
+            return;
+        }
 
         var relicToCopy = Owner.Relics[^2];
         
