@@ -32,11 +32,11 @@ public class HalfJoker() : BalatroJokersRelic
             new DamageVar(5M, ValueProp.Unpowered)
         });
     
-    private bool IsLessThanThreshold => this._cardsPlayedThisTurn <= this.DynamicVars["CardThreshold"].BaseValue;
+    private bool IsNotAboveThreshold => this._cardsPlayedThisTurn <= this.DynamicVars["CardThreshold"].BaseValue;
 
     private void RefreshCounter()
     {
-        this.Status = IsLessThanThreshold ? RelicStatus.Active : RelicStatus.Normal;
+        this.Status = IsNotAboveThreshold ? RelicStatus.Active : RelicStatus.Normal;
         this.InvokeDisplayAmountChanged();
     }
 
@@ -56,18 +56,37 @@ public class HalfJoker() : BalatroJokersRelic
             return;
         ICombatState? combatState = Owner.Creature.CombatState;
         var ownerPlayerCombatState = this.Owner.PlayerCombatState;
-        if (ownerPlayerCombatState != null && !IsLessThanThreshold)
+        if (ownerPlayerCombatState != null && !IsNotAboveThreshold)
             return;
         this.Flash();
         VfxCmd.PlayOnCreatureCenters((IEnumerable<Creature>) combatState.HittableEnemies, "vfx/vfx_attack_slash");
         IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, (IEnumerable<Creature>) combatState.HittableEnemies, this.DynamicVars.Damage, this.Owner.Creature);
     }
-    
+
+    public override Task AfterRoomEntered(AbstractRoom room)
+    {
+        if (room is not CombatRoom) return Task.CompletedTask;
+        
+        this._cardsPlayedThisTurn = 0;
+        this.RefreshCounter();
+        
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
+    {
+        this._cardsPlayedThisTurn = 0;
+        this.Status = RelicStatus.Normal;
+        this.RefreshCounter();
+
+        return Task.CompletedTask;
+    }
+
     public override Task AfterCombatEnd(CombatRoom _)
     {
         this._cardsPlayedThisTurn = 0;
         this.Status = RelicStatus.Normal;
-        this.InvokeDisplayAmountChanged();
+        this.RefreshCounter();
 
         return Task.CompletedTask;
     }
