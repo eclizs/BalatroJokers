@@ -33,6 +33,7 @@ public class Baron() : BalatroJokersRelic
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {
+        if (card.Owner != this.Owner) return Task.CompletedTask;
         if (!Baron.CanAffect(card))
             return Task.CompletedTask;
         CardCmd.ApplyKeyword(card, CardKeyword.Retain);
