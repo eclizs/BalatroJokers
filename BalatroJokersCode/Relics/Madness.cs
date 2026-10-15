@@ -11,19 +11,33 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
 [Pool(typeof(SharedRelicPool))]
 public class Madness() : BalatroJokersRelic
 {
-    public override RelicRarity Rarity =>
-        RelicRarity.Shop;
-
+    private int _powerAmount = 10;
+    
+    public override RelicRarity Rarity => RelicRarity.Shop;
+    
+    [SavedProperty]
+    private int PowerAmount
+    {
+        get => this._powerAmount;
+        set
+        {
+            this.AssertMutable();
+            _powerAmount = value;
+            DynamicVars["MadnessPower"].BaseValue = value;
+        }
+    }
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
         {
-            new PowerVar<MadnessPower>(10M),
+            new PowerVar<MadnessPower>(this.PowerAmount),
             new DynamicVar("AdditionalPercentage", 10M)
         });
     
@@ -32,7 +46,7 @@ public class Madness() : BalatroJokersRelic
         if (room.RoomType != RoomType.Elite)
             return;
         
-        this.DynamicVars["MadnessPower"].BaseValue += this.DynamicVars["AdditionalPercentage"].BaseValue;
+        this.PowerAmount += this.DynamicVars["AdditionalPercentage"].IntValue;
         
         RelicModel? relicToRemove;
         int i = 0;

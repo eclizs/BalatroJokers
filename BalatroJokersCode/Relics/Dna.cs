@@ -39,6 +39,7 @@ public class Dna() : BalatroJokersRelic
         }
     }
     
+    [SavedProperty]
     private int CombatsLeft
     {
         get => this._combatsLeft;
