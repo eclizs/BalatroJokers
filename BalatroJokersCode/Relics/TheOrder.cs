@@ -74,6 +74,7 @@ public class TheOrder() : BalatroJokersRelic
                 if (cardPlay.Card.Type != CardType.Skill)
                 {
                     CardsPlayedInOrder = 0;
+                    if (cardPlay.Card.Type == CardType.Attack) CardsPlayedInOrder++;
                     return;
                 }
                 break;
@@ -81,6 +82,7 @@ public class TheOrder() : BalatroJokersRelic
                 if (cardPlay.Card.Type != CardType.Power)
                 {
                     CardsPlayedInOrder = 0;
+                    if (cardPlay.Card.Type == CardType.Attack) CardsPlayedInOrder++;
                     return;
                 }
                 break;
@@ -98,6 +100,7 @@ public class TheOrder() : BalatroJokersRelic
                 1M,
                 Owner.Creature,
                 null);
+            CardsPlayedInOrder = 0;
         }
     }
 
