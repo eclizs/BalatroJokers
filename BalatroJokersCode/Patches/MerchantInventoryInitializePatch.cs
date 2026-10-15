@@ -13,7 +13,8 @@ static class MerchantInventoryInitializePatch
         MerchantInventory inventory,
         ref MerchantDialogueSet dialogue)
     {
-        inventory.Player.Relics.OfType<Astronomer>().FirstOrDefault()?.PopulateFreeEntries(inventory);
+        foreach (var astronomer in inventory.Player.Relics.OfType<Astronomer>())
+            astronomer.PopulateFreeEntries(inventory);
         
         if (!CreditCard.IsActive(inventory.Player))
             return;

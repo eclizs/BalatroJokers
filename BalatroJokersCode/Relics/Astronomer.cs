@@ -11,9 +11,16 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 public class Astronomer() : BalatroJokersRelic
 {
     private MerchantInventory? _populatedInventory;
-    private readonly HashSet<MerchantEntry> _freeEntries = [];
+    private HashSet<MerchantEntry> _freeEntries = [];
     
     public override RelicRarity Rarity => RelicRarity.Rare;
+
+    protected override void DeepCloneFields()
+    {
+        base.DeepCloneFields();
+        _freeEntries = [];
+        _populatedInventory = null;
+    }
 
     public void PopulateFreeEntries(MerchantInventory inventory)
     {
@@ -23,18 +30,25 @@ public class Astronomer() : BalatroJokersRelic
         _populatedInventory = inventory;
         _freeEntries.Clear();
 
-        AddRandom(Owner.PlayerRng.Shops.NextInt(7) < 5 ? inventory.CharacterCardEntries : inventory.ColorlessCardEntries);
-        AddRandom(inventory.RelicEntries);
-        AddRandom(inventory.PotionEntries);
+        var alreadyFree = inventory.Player.Relics.OfType<Astronomer>()
+            .Where(relic => ReferenceEquals(relic._populatedInventory, inventory))
+            .SelectMany(relic => relic._freeEntries)
+            .ToHashSet();
+
+        AddRandom(inventory.CharacterCardEntries.Concat(inventory.ColorlessCardEntries), alreadyFree);
+        AddRandom(inventory.RelicEntries, alreadyFree);
+        AddRandom(inventory.PotionEntries, alreadyFree);
     }
 
-    private void AddRandom<T>(IReadOnlyList<T> entries) where T : MerchantEntry
+    private void AddRandom<T>(IEnumerable<T> entries, HashSet<MerchantEntry> alreadyFree)
+        where T : MerchantEntry
     {
-        if (entries.Count == 0)
+        var availableEntries = entries.Where(entry => entry.IsStocked && !alreadyFree.Contains(entry)).ToList();
+        if (availableEntries.Count == 0)
             return;
 
-        int index = Owner.PlayerRng.Shops.NextInt(entries.Count);
-        _freeEntries.Add(entries[index]);
+        int index = Owner.PlayerRng.Shops.NextInt(availableEntries.Count);
+        _freeEntries.Add(availableEntries[index]);
     }
 
     public override Task AfterRoomEntered(AbstractRoom room)
