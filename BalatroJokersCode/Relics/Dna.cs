@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,8 +8,9 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.RelicPools;
+using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
@@ -21,7 +19,7 @@ public class Dna() : BalatroJokersRelic
 {
     private int _cardsPlayedThisTurn;
     private int _combatThreshold = 2;
-    private int _combatsLeft;
+    private int _combatsLeft = 2;
     private CardModel? _lastCardPlayed;
     public override RelicRarity Rarity => RelicRarity.Rare;
     
@@ -84,6 +82,7 @@ public class Dna() : BalatroJokersRelic
         if (this.IsUsedUp) this.Status = RelicStatus.Disabled;
         else this.Status = (this.CardsPlayedThisTurn <= this.DynamicVars["CardThreshold"].BaseValue && CombatManager.Instance.IsInProgress) ? RelicStatus.Active : RelicStatus.Normal;
     }
+    
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner != this.Owner || !CombatManager.Instance.IsInProgress || this.IsUsedUp)
@@ -123,13 +122,14 @@ public class Dna() : BalatroJokersRelic
         this.RefreshCounter();
     }
 
-    public override Task AfterActEntered()
+    public override Task AfterCombatVictory(CombatRoom room)
     {
-        this.CombatsLeft = this._combatThreshold;
+        this.CardsPlayedThisTurn = 0;
+        this.RefreshCounter();
         return Task.CompletedTask;
     }
 
-    public override Task AfterObtained()
+    public override Task AfterActEntered()
     {
         this.CombatsLeft = this._combatThreshold;
         return Task.CompletedTask;
