@@ -35,10 +35,12 @@ public class Madness() : BalatroJokersRelic
         this.DynamicVars["MadnessPower"].BaseValue += this.DynamicVars["AdditionalPercentage"].BaseValue;
         
         RelicModel? relicToRemove;
+        int i = 0;
         do
         {
             relicToRemove = Owner.RunState.Rng.Niche.NextItem(Owner.Relics);
             if (relicToRemove == null || Owner.Relics.Count <= 2) return;
+            if (i++ >= 20) return;
         } while (relicToRemove == this || relicToRemove.Rarity == RelicRarity.Starter);
         
         await RelicCmd.Remove(relicToRemove);
