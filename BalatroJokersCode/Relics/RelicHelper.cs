@@ -61,7 +61,9 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         if (!this.PowerApplied)
             return;
         PowerApplied = false;
-        await PowerCmd.Remove(Owner.Creature.GetPower<TPower>());
+        PowerModel power = Owner.Creature.GetPower<TPower>();
+        if (power is null) return;
+        await PowerCmd.Decrement(power);
     }
 
     private async Task ChangePowerStatus()
