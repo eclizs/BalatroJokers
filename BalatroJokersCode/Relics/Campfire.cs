@@ -1,7 +1,9 @@
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -10,8 +12,17 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 [Pool(typeof(SharedRelicPool))]
 public class Campfire() : BalatroJokersRelic
 {
+    public static int UpgradeAmount = 2;
     public override RelicRarity Rarity => RelicRarity.Rare;
     
+    public static bool IsActive(Player player)
+    {
+        return player.Relics.OfType<Campfire>().Any();
+    }
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new CardsVar(UpgradeAmount) });
+
     public override Task AfterRestSiteSmith(Player player)
     {
         if (player != this.Owner)
