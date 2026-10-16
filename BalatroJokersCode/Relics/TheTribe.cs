@@ -23,6 +23,15 @@ public class TheTribe() : BalatroJokersRelic
     private CardRarity _cardRarityToPlay;
     private bool _powerApplied;
     
+    private enum MatchKind
+    {
+        None,
+        Type,
+        Rarity
+    }
+
+    private MatchKind _matchKind;
+    
     public override RelicRarity Rarity => RelicRarity.Rare;
 
     public override bool ShowCounter => CombatManager.Instance.IsInProgress;
@@ -94,23 +103,53 @@ public class TheTribe() : BalatroJokersRelic
         if (cardPlay.Card.Owner != this.Owner || !CombatManager.Instance.IsInProgress)
             return;
 
-        if (cardPlay.Card.Rarity == this.CardRarityToPlay || cardPlay.Card.Type == this.CardTypeToPlay)
+        CardType type = cardPlay.Card.Type;
+        CardRarity rarity = cardPlay.Card.Rarity;
+
+        switch (CardsPlayed)
         {
-            this.CardsPlayed++;
-        }
-        else
-        {
-            this.CardsPlayed = 1;
-            this.CardTypeToPlay = cardPlay.Card.Type;
-            this.CardRarityToPlay = cardPlay.Card.Rarity;
+            case 0:
+                CardsPlayed = 1;
+                CardTypeToPlay = type;
+                CardRarityToPlay = rarity;
+                _matchKind = MatchKind.None;
+                return;
+            case 1:
+                bool sameType = type == CardTypeToPlay;
+                bool sameRarity = rarity == CardRarityToPlay;
+
+                if (!sameType && !sameRarity)
+                {
+                    CardsPlayed = 1;
+                    CardTypeToPlay = type;
+                    CardRarityToPlay = rarity;
+                    return;
+                }
+
+                _matchKind = sameType ? MatchKind.Type : MatchKind.Rarity;
+                CardsPlayed = 2;
+                break;
+            default:
+                if (_matchKind == MatchKind.Type && type == CardTypeToPlay ||
+                    _matchKind == MatchKind.Rarity && rarity == CardRarityToPlay)
+                {
+                    CardsPlayed = 3;
+                }
+                else
+                {
+                    CardsPlayed = 1;
+                    CardTypeToPlay = type;
+                    CardRarityToPlay = rarity;
+                    _matchKind = MatchKind.None;
+                    return;
+                }
+                break;
         }
 
-        if (CardsPlayed == 3)
+        if (CardsPlayed == 3 && !PowerApplied)
         {
-            if (PowerApplied) return;
-            
-            this.PowerApplied = true;
-            DoubleDamagePower? doubleDamagePower = await PowerCmd.Apply<DoubleDamagePower>(
+            PowerApplied = true;
+            await PowerCmd.Apply<DoubleDamagePower>(
                 new ThrowingPlayerChoiceContext(),
                 Owner.Creature,
                 1M,
