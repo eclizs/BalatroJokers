@@ -49,7 +49,7 @@ public class Blueprint() : BalatroJokersRelic
         RelicModel? canonical;
         canonical = sourceId == ModelId.none ? null : ModelDb.GetByIdOrNull<RelicModel>(sourceId);
 
-        if (canonical == null) await Task.CompletedTask;
+        if (canonical == null) return;
         
         var newRelic = canonical.ToMutable();
         await RewardsCmd.OfferCustom(this.Owner, [
