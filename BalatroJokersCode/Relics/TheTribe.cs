@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using BalatroJokers.BalatroJokersCode.Powers;
 using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
@@ -149,7 +150,7 @@ public class TheTribe() : BalatroJokersRelic
         if (CardsPlayed == 3 && !PowerApplied)
         {
             PowerApplied = true;
-            await PowerCmd.Apply<DoubleDamagePower>(
+            TheTribePower? theTribePower = await PowerCmd.Apply<TheTribePower>(
                 new ThrowingPlayerChoiceContext(),
                 Owner.Creature,
                 1M,

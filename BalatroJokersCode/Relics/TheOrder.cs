@@ -94,7 +94,7 @@ public class TheOrder() : BalatroJokersRelic
             if (PowerApplied) return;
             
             PowerApplied = true;
-            TripleDamagePower? tripleDamagePower = await PowerCmd.Apply<TripleDamagePower>(
+            TheOrderPower? theOrderPower = await PowerCmd.Apply<TheOrderPower>(
                 new ThrowingPlayerChoiceContext(),
                 Owner.Creature,
                 1M,
