@@ -10,5 +10,11 @@
   "BALATROJOKERS-TRIPLE_DAMAGE_POWER.title": "Triple Damage",
   "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.description": "This turn, Attacks deal quadruple damage",
   "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.smartDescription": "{Amount:plural:This turn|For the next [blue]{}[/blue] turns}, Attacks deal quadruple damage.",
-  "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.title": "Quadruple Damage"
+  "BALATROJOKERS-QUADRUPLE_DAMAGE_POWER.title": "Quadruple Damage",
+  "BALATROJOKERS-THE_ORDER_POWER.description": "Next turn, Attacks deal triple damage.",
+  "BALATROJOKERS-THE_ORDER_POWER.smartDescription": "{Amount:plural:Next turn|For the next [blue]{}[/blue] turns after this one}, Attacks deal triple damage.",
+  "BALATROJOKERS-THE_ORDER_POWER.title": "The Order",
+  "BALATROJOKERS-THE_TRIBE_POWER.description": "Next turn, Attacks deal double damage.",
+  "BALATROJOKERS-THE_TRIBE_POWER.smartDescription": "{Amount:plural:Next turn|For the next [blue]{}[/blue] turns after this one}, Attacks deal double damage.",
+  "BALATROJOKERS-THE_TRIBE_POWER.title": "The Tribe"
 }
