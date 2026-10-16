@@ -67,4 +67,15 @@ public class Astronomer() : BalatroJokersRelic
 
         return _freeEntries.Contains(entry) ? 0M : originalPrice;
     }
+    
+    public override Task AfterItemPurchased(
+        Player player,
+        MerchantEntry itemPurchased,
+        int goldSpent)
+    {
+        if (player == Owner)
+            _freeEntries.Remove(itemPurchased);
+
+        return Task.CompletedTask;
+    }
 }
