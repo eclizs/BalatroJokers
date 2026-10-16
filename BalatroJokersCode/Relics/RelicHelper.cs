@@ -106,7 +106,9 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         ChangePowerStatus();
 
     public override Task AfterCardEnteredCombat(CardModel card) => ChangePowerStatus();
-    
+
+    public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy) => ChangePowerStatus();
+
     public override Task AfterSideTurnEnd(
         PlayerChoiceContext choiceContext,
         CombatSide side,
