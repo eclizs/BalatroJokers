@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -33,7 +31,7 @@ public class Blueprint() : BalatroJokersRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips => this._extraHoverTips;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new StringVar("Relic") });
+        [new StringVar("Relic")];
 
     public override async Task AfterObtained()
     {

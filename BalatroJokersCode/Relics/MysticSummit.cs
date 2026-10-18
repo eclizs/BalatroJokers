@@ -1,12 +1,8 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -36,29 +32,17 @@ public class MysticSummit() : BalatroJokersRelic
         }
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars
-    {
-        get
-        {
-            return new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
-            {
-                new PowerVar<StrengthPower>(2M), 
-                new PowerVar<DexterityPower>(2M)
-            });
-        }
-    }
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<StrengthPower>(2M), 
+        new PowerVar<DexterityPower>(2M)
+    ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips
-    {
-        get
-        {
-            return new ReadOnlyCollection<IHoverTip>(new List<IHoverTip>
-            {
-                HoverTipFactory.FromPower<StrengthPower>(),
-                HoverTipFactory.FromPower<DexterityPower>()
-            });
-        }
-    }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<DexterityPower>()
+    ];
 
     private async Task ApplyPowers()
     {

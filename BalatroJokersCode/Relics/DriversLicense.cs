@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -35,28 +31,22 @@ public class DriversLicense() : BalatroJokersRelic
         }
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars
-    {
-        get
-        {
-            return new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
-            {
-                new DynamicVar("CardMinimum", 4),
-                new PowerVar<StrengthPower>(2M), 
-                new PowerVar<DexterityPower>(2M)
-            });
-        }
-    }
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar("CardMinimum", 4),
+        new PowerVar<StrengthPower>(2M), 
+        new PowerVar<DexterityPower>(2M)
+    ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
         get
         {
-            return new ReadOnlyCollection<IHoverTip>(new List<IHoverTip>
-            {
+            return
+            [
                 HoverTipFactory.FromPower<StrengthPower>(),
                 HoverTipFactory.FromPower<DexterityPower>()
-            });
+            ];
         }
     }
     

@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -20,8 +19,7 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
     public override RelicRarity Rarity => RelicRarity.Rare;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(
-            new List<DynamicVar> { new CardsVar(RequiredCopies) });
+        [new CardsVar(RequiredCopies)];
 
     private bool PowerApplied
     {

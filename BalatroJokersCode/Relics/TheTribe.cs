@@ -1,6 +1,4 @@
-using System.Collections.ObjectModel;
 using BalatroJokers.BalatroJokersCode.Powers;
-using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,8 +7,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -81,7 +77,7 @@ public class TheTribe() : BalatroJokersRelic
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => 
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new CardsVar(3) });
+        [new CardsVar(3)];
 
     public override Task BeforeSideTurnStart(
         PlayerChoiceContext choiceContext,

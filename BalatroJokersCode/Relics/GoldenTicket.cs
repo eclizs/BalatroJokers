@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -15,14 +12,8 @@ public class GoldenTicket() : BalatroJokersRelic
 {
     public override RelicRarity Rarity => RelicRarity.Common;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars
-    {
-        get
-        {
-            return new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new GoldVar(4) });
-        }
-    }
-    
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(4)];
+
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner != this.Owner || cardPlay.Card.Rarity != CardRarity.Rare)

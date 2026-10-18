@@ -33,7 +33,7 @@ public class Brainstorm() : BalatroJokersRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips => this._extraHoverTips;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new StringVar("StarterRelic") });
+        [new StringVar("StarterRelic")];
 
     public override bool IsAllowed(IRunState runState)
     {

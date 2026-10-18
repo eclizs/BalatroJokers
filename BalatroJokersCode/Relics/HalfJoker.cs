@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -26,11 +24,10 @@ public class HalfJoker() : BalatroJokersRelic
     public override int DisplayAmount => this._cardsPlayedThisTurn;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
-        {
-            new DynamicVar("CardThreshold", 3),
-            new DamageVar(5M, ValueProp.Unpowered)
-        });
+    [
+        new DynamicVar("CardThreshold", 3),
+        new DamageVar(5M, ValueProp.Unpowered)
+    ];
     
     private bool IsNotAboveThreshold => this._cardsPlayedThisTurn <= this.DynamicVars["CardThreshold"].BaseValue;
 

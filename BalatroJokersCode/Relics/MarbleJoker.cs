@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -21,10 +20,10 @@ public class MarbleJoker() : BalatroJokersRelic
     public override RelicRarity Rarity => RelicRarity.Uncommon;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new CardsVar(1) });
+        [new CardsVar(1)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new ReadOnlyCollection<IHoverTip>(new List<IHoverTip> { HoverTipFactory.FromCard<GiantRock>() });
+        [HoverTipFactory.FromCard<GiantRock>()];
 
     public override async Task BeforeHandDraw(
         Player player,

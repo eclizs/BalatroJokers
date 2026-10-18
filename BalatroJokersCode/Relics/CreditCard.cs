@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -24,11 +21,5 @@ public class CreditCard() : BalatroJokersRelic
         return player.Gold + (IsActive(player) ? 100 : 0);
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars
-    {
-        get
-        {
-            return (IEnumerable<DynamicVar>) new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>{new GoldVar(100)});
-        }
-    }
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(100)];
 }

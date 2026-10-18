@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -21,7 +19,7 @@ public class Campfire() : BalatroJokersRelic
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar> { new CardsVar(UpgradeAmount) });
+        [new CardsVar(UpgradeAmount)];
 
     public override Task AfterRestSiteSmith(Player player)
     {

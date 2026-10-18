@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -18,7 +17,7 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 public class Dna() : BalatroJokersRelic
 {
     private int _cardsPlayedThisTurn;
-    private int _combatThreshold = 2;
+    private const int CombatThreshold = 2;
     private int _combatsLeft = 2;
     private CardModel? _lastCardPlayed;
     public override RelicRarity Rarity => RelicRarity.Rare;
@@ -65,18 +64,12 @@ public class Dna() : BalatroJokersRelic
         }
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars
-    {
-        get
-        {
-            return new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
-            {
-                new DynamicVar("CombatThreshold", this._combatThreshold),
-                new DynamicVar("CardThreshold", 1M),
-                new DynamicVar("CombatsLeft", this.CombatsLeft)
-            });
-        }
-    }
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar("CombatThreshold", CombatThreshold),
+        new DynamicVar("CardThreshold", 1M),
+        new DynamicVar("CombatsLeft", this.CombatsLeft)
+    ];
 
     private void RefreshCounter()
     {
@@ -132,7 +125,7 @@ public class Dna() : BalatroJokersRelic
 
     public override Task AfterActEntered()
     {
-        this.CombatsLeft = this._combatThreshold;
+        this.CombatsLeft = CombatThreshold;
         return Task.CompletedTask;
     }
 }

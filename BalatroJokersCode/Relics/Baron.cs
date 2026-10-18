@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 using BaseLib.Utils;
 using BalatroJokers.BalatroJokersCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
@@ -22,14 +18,8 @@ public class Baron() : BalatroJokersRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips
-    {
-        get
-        {
-            return new ReadOnlyCollection<IHoverTip>(
-                new List<IHoverTip> { HoverTipFactory.FromKeyword(CardKeyword.Retain) });
-        }
-    }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [HoverTipFactory.FromKeyword(CardKeyword.Retain)];
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {

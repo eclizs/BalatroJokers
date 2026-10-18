@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using BalatroJokers.BalatroJokersCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -86,11 +85,10 @@ public class Madness() : BalatroJokersRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips => this._extraHoverTips;
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        new ReadOnlyCollection<DynamicVar>(new List<DynamicVar>
-        {
-            new PowerVar<MadnessPower>(this.PowerAmount),
-            new DynamicVar("AdditionalPercentage", 10M)
-        });
+    [
+        new PowerVar<MadnessPower>(this.PowerAmount),
+        new DynamicVar("AdditionalPercentage", 10M)
+    ];
     
     public override async Task AfterCombatVictory(CombatRoom room)
     {
