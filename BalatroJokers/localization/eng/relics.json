@@ -59,5 +59,8 @@
   "BALATROJOKERS-ASTRONOMER.title": "Astronomer",
   "BALATROJOKERS-MARBLE_JOKER.description": "At the start of Elite combats, add [blue]{Cards}[/blue] [gold]{Cards:plural:Giant Rock|Giant Rocks}[/gold] into your [gold]Hand[/gold]. {Cards:plural:It's|They're} free to play this turn.",
   "BALATROJOKERS-MARBLE_JOKER.flavor": "",
-  "BALATROJOKERS-MARBLE_JOKER.title": "Marble Joker"
+  "BALATROJOKERS-MARBLE_JOKER.title": "Marble Joker",
+  "BALATROJOKERS-INVISIBLE_JOKER.description": "After [blue]{RemainingCombats}[/blue] {RemainingCombats:plural:combat|combats}, duplicate a random relic.",
+  "BALATROJOKERS-INVISIBLE_JOKER.flavor": "",
+  "BALATROJOKERS-INVISIBLE_JOKER.title": "Invisible Joker"
 }
