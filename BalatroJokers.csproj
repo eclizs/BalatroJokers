@@ -63,6 +63,7 @@
 
     <ItemGroup>
         <Folder Include="BalatroJokers\images\card_portraits\big\"/>
+        <Folder Include="BalatroJokers\images\enchantments\" />
         <Folder Include="BalatroJokers\images\relics\big\"/>
     </ItemGroup>
 
