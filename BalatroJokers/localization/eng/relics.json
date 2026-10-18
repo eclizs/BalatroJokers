@@ -62,5 +62,8 @@
   "BALATROJOKERS-MARBLE_JOKER.title": "Marble Joker",
   "BALATROJOKERS-INVISIBLE_JOKER.description": "After [blue]{RemainingCombats}[/blue] {RemainingCombats:plural:combat|combats}, duplicate a random relic.",
   "BALATROJOKERS-INVISIBLE_JOKER.flavor": "",
-  "BALATROJOKERS-INVISIBLE_JOKER.title": "Invisible Joker"
+  "BALATROJOKERS-INVISIBLE_JOKER.title": "Invisible Joker",
+  "BALATROJOKERS-SUPERNOVA.description": "Upon pickup, [gold]Enchant[/gold] up to [blue]{Cards}[/blue] {Cards:plural:card|cards} that [gold]Exhausts[/gold] with [purple]Nova[/purple] [blue]{NovaAmount}[/blue].",
+  "BALATROJOKERS-SUPERNOVA.flavor": "",
+  "BALATROJOKERS-SUPERNOVA.title": "Supernova"
 }
