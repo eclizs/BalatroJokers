@@ -1,7 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using BalatroJokers.BalatroJokersCode.Relics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -19,6 +15,7 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 [Pool(typeof(SharedRelicPool))]
 public class Brainstorm() : BalatroJokersRelic
 {
+    [SavedProperty]
     private List<IHoverTip> _extraHoverTips = [];
     
     public override RelicRarity Rarity =>

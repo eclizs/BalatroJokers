@@ -9,12 +9,14 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
 [Pool(typeof(SharedRelicPool))]
 public class Blueprint() : BalatroJokersRelic
 {
+    [SavedProperty]
     private List<IHoverTip> _extraHoverTips = [];
     
     public override RelicRarity Rarity => RelicRarity.Rare;
