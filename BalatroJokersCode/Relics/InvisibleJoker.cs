@@ -55,11 +55,7 @@ public class InvisibleJoker() : BalatroJokersRelic
 
     private RelicModel GetRandomRelic()
     {
-        if (Owner.Relics.Count < 2)
-        {
-            RelicCmd.Remove(this);
-            return null;
-        }
+        if (Owner.Relics.Count < 2) return null;
 
         var relicToCopy = Owner.RunState.Rng.Niche.NextItem(Owner.Relics);
         
