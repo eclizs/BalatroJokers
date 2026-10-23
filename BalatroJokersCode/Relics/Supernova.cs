@@ -24,7 +24,7 @@ public class Supernova() : BalatroJokersRelic
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(2),
-        new DynamicVar("NovaAmount", 2M)
+        new DynamicVar("NovaAmount", 3M)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 

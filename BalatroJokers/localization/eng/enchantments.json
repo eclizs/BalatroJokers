@@ -1,5 +1,5 @@
 {
-  "BALATROJOKERS-NOVA.description": "When played, permanently increase this card's damage or [gold]Block[/gold] by [blue]{Amount}[/blue].",
-  "BALATROJOKERS-NOVA.extraCardText": "Permanently increase this card's {CardType:plural:damage|[gold]Block[/gold]} by [blue]{Amount}[/blue].",
+  "BALATROJOKERS-NOVA.description": "When played, permanently increase this card's {CardType:choose(1|2|3):damage|[gold]Block[/gold]|damage and [gold]Block[/gold]|damage and/or [gold]Block[/gold]} by [blue]{Amount}[/blue].",
+  "BALATROJOKERS-NOVA.extraCardText": "Permanently increase this card's {CardType:choose(1|2|3):damage|[gold]Block[/gold]|damage and [gold]Block[/gold]|damage and/or [gold]Block[/gold]} by [blue]{Amount}[/blue].",
   "BALATROJOKERS-NOVA.title": "Nova"
 }
