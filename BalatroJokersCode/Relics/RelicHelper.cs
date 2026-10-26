@@ -87,11 +87,6 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         if (participants.Contains(Owner.Creature)) await ChangePowerStatus();
     }
 
-    public override Task AfterCardPlayed(
-        PlayerChoiceContext choiceContext,
-        CardPlay cardPlay) =>
-        ChangePowerStatus();
-
     public override Task AfterCardExhausted(
         PlayerChoiceContext choiceContext,
         CardModel card,
@@ -105,7 +100,13 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
 
     public override Task AfterCardEnteredCombat(CardModel card) => ChangePowerStatus();
 
-    public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy) => ChangePowerStatus();
+    public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
+    {
+        if (oldPileType == PileType.Hand && card.Pile?.Type == PileType.Play)
+            return Task.CompletedTask;
+
+        return ChangePowerStatus();
+    }
 
     public override Task AfterSideTurnEnd(
         PlayerChoiceContext choiceContext,
@@ -115,5 +116,4 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
         PowerApplied = false;
         return Task.CompletedTask;
     }
-
 }
