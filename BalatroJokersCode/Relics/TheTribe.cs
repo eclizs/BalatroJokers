@@ -152,6 +152,7 @@ public class TheTribe() : BalatroJokersRelic
                 1M,
                 Owner.Creature,
                 null);
+            CardsPlayed = 0;
         }
     }
     
