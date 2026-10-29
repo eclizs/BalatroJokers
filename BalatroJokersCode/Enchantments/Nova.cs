@@ -67,8 +67,6 @@ public class Nova : BalatroJokersEnchantment
             theScytheCardVersion.IncreasedDamage += this.Amount;
             theScytheCardVersion.CurrentDamage =
                 ModelDb.Card<TheScythe>().CurrentDamage + theScytheCardVersion.IncreasedDamage;
-            MainFile.Logger.Info(
-                $"Nova: {theScytheCardVersion} (Card Version) increased CurrentDamage from {previousCurrentDamage} to {theScytheCardVersion.CurrentDamage}.");
         }
 
         if (this.Card is GeneticAlgorithm geneticAlgorithmCardVersion)
@@ -77,8 +75,6 @@ public class Nova : BalatroJokersEnchantment
             geneticAlgorithmCardVersion.IncreasedBlock += this.Amount;
             geneticAlgorithmCardVersion.CurrentBlock =
                 ModelDb.Card<GeneticAlgorithm>().CurrentBlock + geneticAlgorithmCardVersion.IncreasedBlock;
-            MainFile.Logger.Info(
-                $"Nova: {geneticAlgorithmCardVersion} (Card Version) increased CurrentBlock from {previousCurrentBlock} to {geneticAlgorithmCardVersion.CurrentBlock}.");
         }
         
         CardModel? deckVersion = this.Card.DeckVersion;
@@ -93,8 +89,6 @@ public class Nova : BalatroJokersEnchantment
                     theScytheDeckVersion.IncreasedDamage += this.Amount;
                     theScytheDeckVersion.CurrentDamage =
                         ModelDb.Card<TheScythe>().CurrentDamage + theScytheDeckVersion.IncreasedDamage;
-                    MainFile.Logger.Info(
-                        $"Nova: {theScytheDeckVersion} (Deck Version) increased CurrentDamage from {previousCurrentDamage} to {theScytheDeckVersion.CurrentDamage}.");
                     return Task.CompletedTask;
                 }
                 case GeneticAlgorithm geneticAlgorithmDeckVersion:
@@ -103,8 +97,6 @@ public class Nova : BalatroJokersEnchantment
                     geneticAlgorithmDeckVersion.IncreasedBlock += this.Amount;
                     geneticAlgorithmDeckVersion.CurrentBlock =
                         ModelDb.Card<GeneticAlgorithm>().CurrentBlock + geneticAlgorithmDeckVersion.IncreasedBlock;
-                    MainFile.Logger.Info(
-                        $"Nova: {geneticAlgorithmDeckVersion} (Deck Version) increased CurrentBlock from {previousCurrentBlock} to {geneticAlgorithmDeckVersion.CurrentBlock}.");
                     return Task.CompletedTask;
                 }
             }
