@@ -65,5 +65,8 @@
   "BALATROJOKERS-INVISIBLE_JOKER.title": "Invisible Joker",
   "BALATROJOKERS-SUPERNOVA.description": "Upon pickup, [gold]Enchant[/gold] up to [blue]{Cards}[/blue] {Cards:plural:card|cards} that [gold]Exhausts[/gold] with [purple]Nova[/purple] [blue]{NovaAmount}[/blue].",
   "BALATROJOKERS-SUPERNOVA.flavor": "",
-  "BALATROJOKERS-SUPERNOVA.title": "Supernova"
+  "BALATROJOKERS-SUPERNOVA.title": "Supernova",
+  "BALATROJOKERS-JOKER_STENCIL.description": "Attacks deal [blue]{InitialPercentage}%[/blue] more damage. Deal [blue]{PercentageDecrease}%[/blue] less damage for every card in your [gold]Hand[/gold].",
+  "BALATROJOKERS-JOKER_STENCIL.flavor": "",
+  "BALATROJOKERS-JOKER_STENCIL.title": "Joker Stencil"
 }
