@@ -1,3 +1,7 @@
+using System.Reflection;
+using BalatroJokers.BalatroJokersCode.Pools;
+using BalatroJokers.BalatroJokersCode.Potions;
+using BalatroJokers.BalatroJokersCode.Relics;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
@@ -15,6 +19,22 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
+        Type[] modTypes = Assembly.GetExecutingAssembly().GetTypes();
+
+        foreach (Type relicType in modTypes
+                     .Where(type => !type.IsAbstract && typeof(BalatroJokersRelic).IsAssignableFrom(type))
+                     .OrderBy(type => type.FullName, StringComparer.Ordinal))
+        {
+            ModHelper.AddModelToPool(typeof(BalatroJokersRelicPool), relicType);
+        }
+
+        foreach (Type potionType in modTypes
+                     .Where(type => !type.IsAbstract && typeof(BalatroJokersPotion).IsAssignableFrom(type))
+                     .OrderBy(type => type.FullName, StringComparer.Ordinal))
+        {
+            ModHelper.AddModelToPool(typeof(BalatroJokersPotionPool), potionType);
+        }
+
         //If you want to use scripts defined in your mod for Godot scenes, uncomment the following line.
         //Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(Assembly.GetExecutingAssembly());
 
