@@ -1,0 +1,4 @@
+{
+  "BALATROJOKERS-JUDGEMENT.description": "Obtain {RelicAmount:plural:a|[blue]{RelicAmount}[/blue]} random {RelicAmount:plural:[gold]Joker[/gold]|[gold]Jokers[/gold]}.",
+  "BALATROJOKERS-JUDGEMENT.title": "Judgement"
+}
