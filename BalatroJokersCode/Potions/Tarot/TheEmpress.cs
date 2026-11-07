@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 
 namespace BalatroJokers.BalatroJokersCode.Potions;
 
-public class TheEmpress() : BalatroJokersPotion
+public class TheEmpress() : BalatroJokersTarotPotion
 {
     public override PotionRarity Rarity => PotionRarity.Token;
     public override PotionUsage Usage => PotionUsage.CombatOnly;

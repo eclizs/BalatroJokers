@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Models.PotionPools;
 namespace BalatroJokers.BalatroJokersCode.Potions;
 
 [Pool(typeof(SharedPotionPool))]
-public class Judgement : BalatroJokersPotion
+public class Judgement : BalatroJokersTarotPotion
 {
     public override PotionRarity Rarity => PotionRarity.Token;
     public override PotionUsage Usage => PotionUsage.AnyTime;
