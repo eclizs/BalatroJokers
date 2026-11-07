@@ -19,5 +19,13 @@ public abstract class BalatroJokersPotion : CustomPotionModel
             return ResourceLoader.Exists(path) ? path : null;
         }
     }
-    
+
+    public override string? CustomPackedOutlinePath
+    {
+        get
+        {
+            var path = Path.Join(MainFile.ResPath, "images", "potions", $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png");
+            return ResourceLoader.Exists(path) ? path : null;
+        }
+    }
 }
