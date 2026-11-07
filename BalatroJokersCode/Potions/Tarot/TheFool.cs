@@ -48,10 +48,10 @@ public class TheFool() : BalatroJokersTarotPotion
         switch (potionPool)
         {
             case BalatroJokersTarotPotionPool:
-                ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[purple]{potion.Title.GetFormattedText()}[/purple]" ?? "";
+                ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[color=#755998]{potion.Title.GetFormattedText()}[/color]" ?? "";
                 break;
             case  BalatroJokersPlanetPotionPool:
-                ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[aqua]{potion.Title.GetFormattedText()}[/aqua]" ?? "";
+                ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[color=#59A6C6]{potion.Title.GetFormattedText()}[/color]" ?? "";
                 break;
         }
         return Task.CompletedTask;
