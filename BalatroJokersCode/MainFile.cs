@@ -25,14 +25,24 @@ public partial class MainFile : Node
                      .Where(type => !type.IsAbstract && typeof(BalatroJokersRelic).IsAssignableFrom(type))
                      .OrderBy(type => type.FullName, StringComparer.Ordinal))
         {
+            MainFile.Logger.Info("Relic: " + relicType.Name ?? "None");
             ModHelper.AddModelToPool(typeof(BalatroJokersRelicPool), relicType);
         }
 
         foreach (Type potionType in modTypes
-                     .Where(type => !type.IsAbstract && typeof(BalatroJokersPotion).IsAssignableFrom(type))
+                     .Where(type => !type.IsAbstract && typeof(BalatroJokersTarotPotion).IsAssignableFrom(type))
                      .OrderBy(type => type.FullName, StringComparer.Ordinal))
         {
-            ModHelper.AddModelToPool(typeof(BalatroJokersPotionPool), potionType);
+            MainFile.Logger.Info("Potion: " + potionType.Name ?? "None");
+            ModHelper.AddModelToPool(typeof(BalatroJokersTarotPotionPool), potionType);
+        }
+
+        foreach (Type potionType in modTypes
+                     .Where(type => !type.IsAbstract && typeof(BalatroJokersPlanetPotion).IsAssignableFrom(type))
+                     .OrderBy(type => type.FullName, StringComparer.Ordinal))
+        {
+            MainFile.Logger.Info("Planet potion: " + potionType.Name);
+            ModHelper.AddModelToPool(typeof(BalatroJokersPlanetPotionPool), potionType);
         }
 
         //If you want to use scripts defined in your mod for Godot scenes, uncomment the following line.
