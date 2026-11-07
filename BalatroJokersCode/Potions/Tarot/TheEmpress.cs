@@ -26,7 +26,7 @@ public class TheEmpress() : BalatroJokersTarotPotion
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(this.SelectionScreenPrompt, 0, DynamicVars["SharpAmount"].IntValue);
         Sharp canonicalEnchantment = ModelDb.Enchantment<Sharp>();
-        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, this.Owner, prefs, (c => c.Type == CardType.Attack), this))
+        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, this.Owner, prefs, (c => c is { Type: CardType.Attack, Enchantment: null }), this))
         {
             CardCmd.Enchant(canonicalEnchantment.ToMutable(), card, (Decimal) this.DynamicVars["SharpAmount"].IntValue);
         }
