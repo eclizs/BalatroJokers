@@ -2,7 +2,7 @@
   "BALATROJOKERS-JUDGEMENT.description": "Obtain {RelicAmount:plural:a|[blue]{RelicAmount}[/blue]} random {RelicAmount:plural:[gold]Joker[/gold]|[gold]Jokers[/gold]}.",
   "BALATROJOKERS-JUDGEMENT.title": "Judgement",
   "BALATROJOKERS-THE_EMPRESS.description": "Enchant up to [blue]{Cards}[/blue] {Cards:plural:card|cards} in your [gold]Hand[/gold] with [purple]Sharp[/purple] [blue]{SharpAmount}[/blue] this combat.",
-  "BALATROJOKERS-THE_EMPRESS.selectionScreenPrompt": "Choose up to [blue]{Cards}[/blue] {Cards:plural:card|cards} to [gold]Enchant[/gold] with [purple]Sharp[/purple] [blue]{SharpAmount}[/blue].",
+  "BALATROJOKERS-THE_EMPRESS.selectionScreenPrompt": "Choose up to [blue]2[/blue] cards to [gold]Enchant[/gold] with [purple]Sharp[/purple] [blue]2[/blue].",
   "BALATROJOKERS-THE_EMPRESS.title": "The Empress",
   "BALATROJOKERS-THE_FOOL.description": "Create a copy of the last [purple]Tarot[/purple] or [cyan]Planet[/cyan] card used. ([purple]The Fool[/purple] excluded).",
   "BALATROJOKERS-THE_FOOL.title": "The Fool"
