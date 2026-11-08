@@ -11,4 +11,7 @@ public static class BalatroJokersHoverTips
     
     [CustomEnum]
     public static StaticHoverTip Planet;
+    
+    [CustomEnum]
+    public static StaticHoverTip Joker;
 }
