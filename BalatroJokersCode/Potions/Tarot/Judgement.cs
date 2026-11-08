@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 
@@ -21,6 +22,8 @@ public class Judgement : BalatroJokersTarotPotion
     [
         new DynamicVar("RelicAmount", 1)
     ];
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(BalatroJokersHoverTips.Joker)];
 
     protected override Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
