@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BalatroJokers.BalatroJokersCode.Enchantments;
 
-public class Nova : BalatroJokersEnchantment
+public class Nova() : BalatroJokersEnchantment
 {
     [SavedProperty]
     private int _extraAmount = 0;
