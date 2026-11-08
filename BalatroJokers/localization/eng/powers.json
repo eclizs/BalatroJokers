@@ -19,5 +19,8 @@
   "BALATROJOKERS-THE_TRIBE_POWER.title": "The Tribe",
   "BALATROJOKERS-JOKER_STENCIL_POWER.description": "Attacks deal additional damage.",
   "BALATROJOKERS-JOKER_STENCIL_POWER.smartDescription": "Attacks deal [blue]{Amount}%[/blue] more damage.",
-  "BALATROJOKERS-JOKER_STENCIL_POWER.title": "Joker Stencil"
+  "BALATROJOKERS-JOKER_STENCIL_POWER.title": "Joker Stencil",
+  "BALATROJOKERS-STEEL_POWER.description": "Attacks deal additional damage",
+  "BALATROJOKERS-STEEL_POWER.smartDescription": "Attacks deal [blue]{CurrentMult:percentMore()}%[/blue] more damage.",
+  "BALATROJOKERS-STEEL_POWER.title": "Steel"
 }
