@@ -26,7 +26,7 @@ public class SteelPower() : BalatroJokersPower
         
         var hand = PileType.Hand.GetPile(this.Owner.Player).Cards;
 
-        var steelCardsAmount = hand.GroupBy(c => c.Enchantment == ModelDb.Enchantment<Steel>()).Count();
+        var steelCardsAmount = hand.Count(c => c.Enchantment?.CanonicalInstance == ModelDb.Enchantment<Steel>());
 
         if (steelCardsAmount == 0)
         {

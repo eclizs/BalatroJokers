@@ -4,5 +4,7 @@
   "BALATROJOKERS-NOVA.title": "Nova",
   "BALATROJOKERS-LUCKY.description": "When played, [blue]{BaseChance}[/blue] in [blue]{ExtraDamageChance}[/blue] chance to deal [blue]{Damage}[/blue] additional damage and [blue]{BaseChance}[/blue] in [blue]{ExtraGoldChance}[/blue] chance to gain [blue]{Gold}[/blue] [gold]Gold[/gold].",
   "BALATROJOKERS-LUCKY.extraCardText": "[blue]{BaseChance}[/blue] in [blue]{ExtraDamageChance}[/blue] chance to deal [blue]{Damage}[/blue] additional damage\n[blue]{BaseChance}[/blue] in [blue]{ExtraGoldChance}[/blue] chance to gain [blue]{Gold}[/blue] [gold]Gold[/gold]\n(Both can trigger on the same turn).",
-  "BALATROJOKERS-LUCKY.title": "Lucky"
+  "BALATROJOKERS-LUCKY.title": "Lucky",
+  "BALATROJOKERS-STEEL.description": "When this is card is in your [gold]Hand[/gold], deal [blue]{DamageMult:percentMore()}%[/blue] more damage.",
+  "BALATROJOKERS-STEEL.title": "Steel"
 }
