@@ -1,4 +1,4 @@
-namespace BalatroJokers.BalatroJokersCode.Potions;
+﻿namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
 public abstract class BalatroJokersTarotPotion : BalatroJokersPotion
 {
