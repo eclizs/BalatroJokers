@@ -19,7 +19,7 @@ public class TheEmpress() : TarotHelper<Sharp>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new DynamicVar("SharpAmount", 2M)
+        new DynamicVar("SharpAmount", EnchantAmount)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips => [.. HoverTipFactory.FromEnchantment<Sharp>(DynamicVars["SharpAmount"].IntValue) ];

@@ -18,7 +18,7 @@ public class TheHierophant() : TarotHelper<Nimble>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new DynamicVar("NimbleAmount", 2M)
+        new DynamicVar("NimbleAmount", EnchantAmount)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips => [.. HoverTipFactory.FromEnchantment<Nimble>(DynamicVars["NimbleAmount"].IntValue) ];
