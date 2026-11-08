@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BalatroJokers.BalatroJokersCode.Enchantments;
@@ -32,17 +33,21 @@ public class Lucky() : BalatroJokersEnchantment, IChance
         new DynamicVar("ExtraDamageChance", 3),
         new DynamicVar("ExtraGoldChance", 5),
         new GoldVar(30),
-        new DamageVar(8M, ValueProp.Unpowered)
+        new DamageVar(5M, ValueProp.Unpowered)
     ];
 
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (this.RollChance(Card.Owner, DynamicVars["ExtraGoldChance"].IntValue))
-            await PlayerCmd.GainGold(DynamicVars.Gold.BaseValue, this.Card.Owner);
+        if (cardPlay?.Card.Owner is not { } player || cardPlay?.Card.CanonicalInstance != this.Card.CanonicalInstance) return;
+        if (this.RollChance(Card.Owner, DynamicVars["ExtraDamageChance"].IntValue))
+            await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), player.Creature, DynamicVars.Damage.BaseValue, player.Creature, null);
     }
-    
-    public override Decimal EnchantDamageAdditive(Decimal originalDamage, ValueProp props)
+
+    public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay? cardPlay)
     {
-        return !props.IsPoweredAttack() || this.RollChance(this.Card.Owner, DynamicVars["ExtraDamageChance"].IntValue) == false ? 0M : DynamicVars.Damage.BaseValue;
+        if (cardPlay?.Card.Owner is not { } player) return;
+        
+        if (this.RollChance(Card.Owner, DynamicVars["ExtraGoldChance"].IntValue))
+            await PlayerCmd.GainGold(DynamicVars.Gold.BaseValue, player);
     }
 }
