@@ -12,28 +12,15 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 
 namespace BalatroJokers.BalatroJokersCode.Potions;
 
-public class TheEmpress() : BalatroJokersTarotPotion
+public class TheEmpress() : TarotHelper<Sharp>
 {
-    public override PotionRarity Rarity => PotionRarity.Token;
-    public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    protected override decimal EnchantAmount => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2),
+        new CardsVar(1),
         new DynamicVar("SharpAmount", 2M)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips => [.. HoverTipFactory.FromEnchantment<Sharp>(DynamicVars["SharpAmount"].IntValue) ];
-
-    protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
-    {
-        CardSelectorPrefs prefs = new CardSelectorPrefs(this.SelectionScreenPrompt, 0, DynamicVars.Cards.IntValue);
-        Sharp canonicalEnchantment = ModelDb.Enchantment<Sharp>();
-        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, this.Owner, prefs, (c => c is { Type: CardType.Attack, Enchantment: null }), this))
-        {
-            CardCmd.Enchant(canonicalEnchantment.ToMutable(), card, (Decimal) this.DynamicVars["SharpAmount"].IntValue);
-        }
-        canonicalEnchantment = null;
-    }
 }
