@@ -1,6 +1,4 @@
 ﻿using BalatroJokers.BalatroJokersCode.Enchantments;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Potions;
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
