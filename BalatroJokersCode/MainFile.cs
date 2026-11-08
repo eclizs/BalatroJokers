@@ -1,6 +1,7 @@
 using System.Reflection;
 using BalatroJokers.BalatroJokersCode.Pools;
 using BalatroJokers.BalatroJokersCode.Potions;
+using BalatroJokers.BalatroJokersCode.Potions.Tarot;
 using BalatroJokers.BalatroJokersCode.Relics;
 using Godot;
 using HarmonyLib;
@@ -33,7 +34,7 @@ public partial class MainFile : Node
                      .Where(type => !type.IsAbstract && typeof(BalatroJokersTarotPotion).IsAssignableFrom(type))
                      .OrderBy(type => type.FullName, StringComparer.Ordinal))
         {
-            MainFile.Logger.Info("Potion: " + potionType.Name ?? "None");
+            MainFile.Logger.Info("Tarot Potion: " + potionType.Name ?? "None");
             ModHelper.AddModelToPool(typeof(BalatroJokersTarotPotionPool), potionType);
         }
 
