@@ -1,11 +1,11 @@
 {
   "BALATROJOKERS-THE_FOOL.description": "Create a copy of the last [color=#C093F8]Tarot[/color] or [color=#96E3FC]Planet[/color] card used. ([color=#C093F8]The Fool[/color] excluded).{LastTarotOrPlanetUsed.StringValue:cond:\n(Creates {})|}",
   "BALATROJOKERS-THE_FOOL.title": "The Fool",
-  "BALATROJOKERS-THE_MAGICIAN.description": "",
+  "BALATROJOKERS-THE_MAGICIAN.description": "Enchant up to [blue]{Cards}[/blue] {Cards:plural:card|cards} in your [gold]Hand[/gold] with [purple]Lucky[/purple] this combat.",
   "BALATROJOKERS-THE_MAGICIAN.title": "The Magician",
   "BALATROJOKERS-THE_HIGH_PRIESTESS.description": "",
   "BALATROJOKERS-THE_HIGH_PRIESTESS.title": "The High Priestess",
-  "BALATROJOKERS-THE_EMPRESS.description": "Enchant up to [blue]{Cards}[/blue] {Cards:plural:card|cards} in your [gold]Hand[/gold] with [purple]Sharp[/purple] [blue]{SharpAmount}[/blue] this combat.",
+  "BALATROJOKERS-THE_EMPRESS.description": "Enchant up to [blue]{Cards}[/blue] {Cards:plural:Attack|Attacks} in your [gold]Hand[/gold] with [purple]Sharp[/purple] [blue]{SharpAmount}[/blue] this combat.",
   "BALATROJOKERS-THE_EMPRESS.selectionScreenPrompt": "Choose up to [blue]2[/blue] cards to [gold]Enchant[/gold] with [purple]Sharp[/purple] [blue]2[/blue].",
   "BALATROJOKERS-THE_EMPRESS.title": "The Empress",
   "BALATROJOKERS-THE_EMPEROR.description": "",
