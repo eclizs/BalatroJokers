@@ -15,7 +15,7 @@ public abstract class EnchantingTarot<TEnchant> : BalatroJokersTarotPotion
 {
     public override PotionRarity Rarity => PotionRarity.Token;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
     
     protected abstract decimal EnchantAmount { get; }
     
@@ -30,7 +30,10 @@ public abstract class EnchantingTarot<TEnchant> : BalatroJokersTarotPotion
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(this.SelectionScreenPrompt, DynamicVars.Cards.IntValue);
         TEnchant canonicalEnchantment = ModelDb.Enchantment<TEnchant>();
-        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, this.Owner, prefs, (c => c is {Enchantment: null } && canonicalEnchantment.CanEnchant(c)), this))
+        
+        if (target?.Player == null) return;
+        
+        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, target.Player, prefs, (c => canonicalEnchantment.CanEnchant(c)), this))
         {
             CardCmd.Enchant(canonicalEnchantment.ToMutable(), card, EnchantAmount);
             if (card.DeckVersion != null)
