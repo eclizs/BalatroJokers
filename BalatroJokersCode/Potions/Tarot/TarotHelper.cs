@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
-public abstract class TarotHelper<TEnchant> : BalatroJokersTarotPotion
+public abstract class EnchantingTarot<TEnchant> : BalatroJokersTarotPotion
     where TEnchant : EnchantmentModel
 {
     public override PotionRarity Rarity => PotionRarity.Token;

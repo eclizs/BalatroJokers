@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
-public class TheHierophant() : TarotHelper<Nimble>
+public class TheHierophant() : EnchantingTarot<Nimble>
 {
     protected override decimal EnchantAmount => 2;
 

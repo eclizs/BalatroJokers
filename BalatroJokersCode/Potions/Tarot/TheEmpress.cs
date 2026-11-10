@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
-public class TheEmpress() : TarotHelper<Sharp>
+public class TheEmpress() : EnchantingTarot<Sharp>
 {
     protected override decimal EnchantAmount => 2;
 

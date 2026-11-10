@@ -2,7 +2,7 @@
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
-public class Justice() : TarotHelper<Glass>
+public class Justice() : EnchantingTarot<Glass>
 {
     protected override decimal EnchantAmount => 1;
 }

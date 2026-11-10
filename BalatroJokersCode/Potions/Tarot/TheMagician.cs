@@ -2,7 +2,7 @@
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 
-public class TheMagician() : TarotHelper<Lucky>
+public class TheMagician() : EnchantingTarot<Lucky>
 {
     protected override decimal EnchantAmount => 2;
 }
