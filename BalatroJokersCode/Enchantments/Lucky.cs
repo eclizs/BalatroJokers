@@ -16,7 +16,8 @@ public class Lucky() : BalatroJokersEnchantment, IChance
     public override bool ShowAmount => false;
     public override bool HasExtraCardText => true;
 
-    public override bool CanEnchant(CardModel card) => card.Type == CardType.Attack;
+    public override bool CanEnchant(CardModel card) => 
+        base.CanEnchant(card) && card.Type == CardType.Attack;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
