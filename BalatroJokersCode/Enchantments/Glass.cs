@@ -41,8 +41,7 @@ public class Glass() : BalatroJokersEnchantment, IChance
         return this.RollChance(this.Card.Owner, DynamicVars["ExhaustChance"].IntValue) ? (PileType.Exhaust, position) : (pileType, position);
     }
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer,
-        CardModel? cardSource)
+    public override decimal EnchantDamageMultiplicative(decimal originalDamage, ValueProp props)
     {
         return !props.IsPoweredAttack() ? 1M : 2M;
     }
