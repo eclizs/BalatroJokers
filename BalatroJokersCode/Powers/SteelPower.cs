@@ -20,23 +20,35 @@ public class SteelPower() : BalatroJokersPower
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("CurrentMult", 1M)];
 
+    private Task ModifyPowerAmount()
+    {
+        var player = this.Owner.Player;
+        if (player != null)
+        {
+            var hand = PileType.Hand.GetPile(player).Cards;
+            var steelCardsAmount = hand.Count(c => c.Enchantment?.CanonicalInstance == ModelDb.Enchantment<Steel>());
+
+            if (steelCardsAmount == 0)
+            {
+                PowerCmd.Remove(this);
+                return Task.CompletedTask;
+            }
+        
+            DynamicVars["CurrentMult"].BaseValue = (decimal)Math.Pow(1.5, steelCardsAmount);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => ModifyPowerAmount();
+
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource) => ModifyPowerAmount();
+
     public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
     {
         if (card.Owner != Owner.Player) return Task.CompletedTask;
         
-        var hand = PileType.Hand.GetPile(this.Owner.Player).Cards;
-
-        var steelCardsAmount = hand.Count(c => c.Enchantment?.CanonicalInstance == ModelDb.Enchantment<Steel>());
-
-        if (steelCardsAmount == 0)
-        {
-            PowerCmd.Remove(this);
-            return Task.CompletedTask;
-        }
-        
-        DynamicVars["CurrentMult"].BaseValue = (decimal)Math.Pow(1.5, steelCardsAmount);
-        
-        return Task.CompletedTask;
+        return ModifyPowerAmount();
     }
 
     public override decimal ModifyDamageMultiplicative(
