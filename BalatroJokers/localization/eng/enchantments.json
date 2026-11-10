@@ -9,5 +9,8 @@
   "BALATROJOKERS-STEEL.title": "Steel",
   "BALATROJOKERS-GLASS.description": "This card's attack damage is doubled. [blue]{BaseChance}[/blue] in [blue]{ExhaustChance}[/blue] to [gold]Exhaust[/gold].",
   "BALATROJOKERS-GLASS.extraCardText": "[blue]{BaseChance}[/blue] in [blue]{ExhaustChance}[/blue] chance to [gold]Exhaust[/gold].",
-  "BALATROJOKERS-GLASS.title": "Glass"
+  "BALATROJOKERS-GLASS.title": "Glass",
+  "BALATROJOKERS-GOLD.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], gain [blue]{Amount}[/blue] [gold]Gold[/gold].",
+  "BALATROJOKERS-GOLD.extraCardText": "At the end of your turn, if this is in your [gold]Hand[/gold], gain [blue]{Amount}[/blue] [gold]Gold[/gold].",
+  "BALATROJOKERS-GOLD.title": "Gold"
 }
