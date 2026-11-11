@@ -12,7 +12,7 @@ namespace BalatroJokers.BalatroJokersCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
 public class StoneWall() : BalatroJokersCard(-1,
-    CardType.Skill, CardRarity.Token,
+    CardType.Skill, CardRarity.Ancient,
     TargetType.None)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [ new BlockVar(10M, ValueProp.Unpowered)];
