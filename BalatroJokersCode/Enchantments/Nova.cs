@@ -57,9 +57,11 @@ public class Nova() : BalatroJokersEnchantment
         if (cardPlay.Card != this.Card)
             return Task.CompletedTask;
         
-        // These cards store Nova's growth in their native counters instead.
         if (this.Card is not (TheScythe or GeneticAlgorithm))
+        {
             this.ExtraAmount += this.Amount;
+            this.Card.DynamicVars.RecalculateForUpgradeOrEnchant();
+        }
 
         if (this.Card is TheScythe theScytheCardVersion)
         {
@@ -100,23 +102,11 @@ public class Nova() : BalatroJokersEnchantment
                     return Task.CompletedTask;
                 }
             }
-
-            switch (this.DynamicVars["CardType"].IntValue)
+            
+            if (deckVersion.Enchantment is Nova deckNova)
             {
-                case (int)EnchantedCardType.Block:
-                    deckVersion.DynamicVars.Block.UpgradeValueBy(this.Amount);
-                    deckVersion.DynamicVars.Block.FinalizeUpgrade();
-                    break;
-                case (int)EnchantedCardType.Damage:
-                    deckVersion.DynamicVars.Damage.UpgradeValueBy(this.Amount);
-                    deckVersion.DynamicVars.Damage.FinalizeUpgrade();
-                    break;
-                case (int)EnchantedCardType.Both:
-                    deckVersion.DynamicVars.Block.UpgradeValueBy(this.Amount);
-                    deckVersion.DynamicVars.Block.FinalizeUpgrade();
-                    deckVersion.DynamicVars.Damage.UpgradeValueBy(this.Amount);
-                    deckVersion.DynamicVars.Damage.FinalizeUpgrade();
-                    break;
+                deckNova.ExtraAmount += this.Amount;
+                deckVersion.DynamicVars.RecalculateForUpgradeOrEnchant();
             }
         }
         return Task.CompletedTask;
