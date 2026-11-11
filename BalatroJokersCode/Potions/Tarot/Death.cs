@@ -38,13 +38,13 @@ public class Death() : BalatroJokersTarotPotion
         var rightCardId = cardList[1].CanonicalInstance.Id;
         var rightCardEnchantment = cardList[1].Enchantment;
         var EnchantmentId = rightCardEnchantment?.CanonicalInstance.Id;
+        var player = leftCard.Owner;
+        var deckVersion = leftCard.DeckVersion;
 
         var canonical = rightCardId == ModelId.none ? null : ModelDb.GetByIdOrNull<CardModel>(rightCardId);
         
         if (canonical == null) return;
         
-        var player = leftCard.Owner;
-        var deckVersion = leftCard.DeckVersion;
         var combatState = leftCard.CombatState;
 
         if (combatState == null) return;
@@ -66,7 +66,7 @@ public class Death() : BalatroJokersTarotPotion
             {
                 CardCmd.Enchant(ModelDb.GetByIdOrNull<EnchantmentModel>(EnchantmentId)?.ToMutable(), deckReplacement, rightCardEnchantment.Amount);
             }
-            var result = await CardCmd.Transform(deckVersion, deckReplacement, CardPreviewStyle.MessyLayout);
+            var result = await CardCmd.Transform(deckVersion, deckReplacement);
 
             if (result is { success: true } added)
                 combatReplacement.DeckVersion = added.cardAdded;
