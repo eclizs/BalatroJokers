@@ -34,7 +34,7 @@
   "BALATROJOKERS-DEATH.description": "Choose [blue]2[/blue] cards, permanently [gold]Transform[/gold] the left card into the right card ([gold]Eternal[/gold] cards will only be transformed in combat).",
   "BALATROJOKERS-DEATH.selectionScreenPrompt": "Choose [blue]2[/blue] cards and [gold]Transform[/gold] the left card into the right card.",
   "BALATROJOKERS-DEATH.title": "Death",
-  "BALATROJOKERS-TEMPERANCE.description": "",
+  "BALATROJOKERS-TEMPERANCE.description": "Gain {CommonAmount}/{UncommonAmount}/{RareAmount} [gold]Gold[/gold] for every Common/Uncommon/Rare [gold]Relic[/gold] you have (Max [blue]{Gold}[/blue] [gold]Gold[/gold]).",
   "BALATROJOKERS-TEMPERANCE.title": "Temperance",
   "BALATROJOKERS-THE_DEVIL.description": "Permanently [gold]Enchant[/gold] {Cards:a card|{} cards} in your [gold]Hand[/gold] with [purple]Gold[/purple] [blue]{GoldAmount}[/blue].",
   "BALATROJOKERS-THE_DEVIL.selectionScreenPrompt": "Choose a card to [gold]Enchant[/gold] with [purple]Gold[/purple] [blue]5[/blue].",
