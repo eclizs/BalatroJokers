@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
-[Pool(typeof(IroncladRelicPool))]
+[Pool(typeof(SharedRelicPool))]
 public class MarbleJoker() : BalatroJokersRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
