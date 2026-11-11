@@ -21,7 +21,11 @@ public class TheHangedMan() : BalatroJokersTarotPotion
         new CardsVar(1)
     ];
     
-    public override IEnumerable<IHoverTip> ExtraHoverTips => [ HoverTipFactory.FromKeyword(CardKeyword.Exhaust) ];
+    public override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [ 
+            HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+            HoverTipFactory.FromKeyword(CardKeyword.Eternal)
+        ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
