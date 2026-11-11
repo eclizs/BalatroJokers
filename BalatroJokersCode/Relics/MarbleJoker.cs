@@ -1,3 +1,4 @@
+using BalatroJokers.BalatroJokersCode.Cards;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -23,28 +24,18 @@ public class MarbleJoker() : BalatroJokersRelic
         [new CardsVar(1)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromCard<GiantRock>()];
+        [HoverTipFactory.FromCard<StoneWall>()];
 
     public override async Task BeforeHandDraw(
         Player player,
         PlayerChoiceContext choiceContext,
         ICombatState combatState)
     {
-        if (player != this.Owner || this.Owner.PlayerCombatState.TurnNumber > 1)
+        if (player != this.Owner || this.Owner.PlayerCombatState.TurnNumber != 1)
             return;
-        AbstractRoom currentRoom = combatState.RunState.CurrentRoom;
-        if (currentRoom == null) return;
-        if (currentRoom.RoomType != RoomType.Elite) return;
         this.Flash();
-        List<CardModel> list = [];
-        for (int i = 0; i < this.DynamicVars.Cards.IntValue; ++i)
-        {
-            list.Add(combatState.CreateCard((CardModel) ModelDb.Card<GiantRock>(), this.Owner));
-        }
-        foreach (CardModel cardModel in list)
-            cardModel.SetToFreeThisTurn();
-        
-        IReadOnlyList<CardPileAddResult> combat = await CardPileCmd.AddGeneratedCardsToCombat((IEnumerable<CardModel>) list, PileType.Hand, this.Owner);
+        for (int i = 0; (Decimal) i < this.DynamicVars.Cards.BaseValue; ++i)
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(combatState.CreateCard((CardModel) ModelDb.Card<StoneWall>(), this.Owner), PileType.Draw, this.Owner, CardPilePosition.Random));
     }
 }
     
