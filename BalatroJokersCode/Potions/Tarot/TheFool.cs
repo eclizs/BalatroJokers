@@ -1,7 +1,5 @@
 using BalatroJokers.BalatroJokersCode.Pools;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -17,24 +15,20 @@ namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 [Pool(typeof(SharedPotionPool))]
 public class TheFool() : BalatroJokersTarotPotion
 {
+    private List<IHoverTip> _extraHoverTips = 
+    [
+        HoverTipFactory.Static(BalatroJokersHoverTips.Tarot),
+        HoverTipFactory.Static(BalatroJokersHoverTips.Planet)
+    ];
+    
     public override PotionRarity Rarity => PotionRarity.Token;
     public override PotionUsage Usage => PotionUsage.AnyTime;
     public override TargetType TargetType => TargetType.Self;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new StringVar("LastTarotOrPlanetUsed")];
 
-    public override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.Static(BalatroJokersHoverTips.Tarot),
-        HoverTipFactory.Static(BalatroJokersHoverTips.Planet)
-    ];
-
-    private bool PotionIsValid(PotionModel potion)
-    {
-        return (ModelDb.PotionPool<BalatroJokersTarotPotionPool>().AllPotions.Contains(potion.CanonicalInstance) ||
-                ModelDb.PotionPool<BalatroJokersPlanetPotionPool>().AllPotions.Contains(potion.CanonicalInstance))
-               && potion.CanonicalInstance != ModelDb.Potion<TheFool>();
-    }
+    public override IEnumerable<IHoverTip> ExtraHoverTips => _extraHoverTips;
+    
 
     private PotionPoolModel GetPotionPool(PotionModel potion)
     {
@@ -45,41 +39,36 @@ public class TheFool() : BalatroJokersTarotPotion
         else return null;
     }
 
-    private Task SetupDynamicVar(PotionModel potion)
+    private Task SetupDynamicVar(ModelId? potionId)
     {
-        if (!PotionIsValid(potion)) return Task.CompletedTask;
-        
+        var potion = ModelDb.GetByIdOrNull<PotionModel>(potionId);
+        if (potion == null) return Task.CompletedTask;
         PotionPoolModel potionPool = GetPotionPool(potion);
 
         switch (potionPool)
         {
             case BalatroJokersTarotPotionPool:
                 ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[color=#C093F8]{potion.Title.GetFormattedText()}[/color]" ?? "";
+                _extraHoverTips.AddRange(potion.HoverTips);
                 break;
             case  BalatroJokersPlanetPotionPool:
                 ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[color=#96E3FC]{potion.Title.GetFormattedText()}[/color]" ?? "";
+                _extraHoverTips.AddRange(potion.HoverTips);
                 break;
         }
         return Task.CompletedTask;
     }
 
-    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => SetupDynamicVar(potion);
+    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => SetupDynamicVar(TarotHistory.LastUsed[Owner]);
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        var lastPotionUsed = CombatManager.Instance.History.Entries.OfType<PotionUsedEntry>().
-            LastOrDefault(p => PotionIsValid(p.Potion))
-            ?.Potion;
+        var id = TarotHistory.LastUsed[Owner];
+        if (id == ModelId.none) return;
 
-        var sourceId = lastPotionUsed?.CanonicalInstance.Id;
+        var canonical = ModelDb.GetByIdOrNull<PotionModel>(id);
+        if (canonical == null) return;
 
-        if (sourceId == null) return;
-        
-        var canonical = sourceId == ModelId.none ? null : ModelDb.GetByIdOrNull<PotionModel>(sourceId);
-
-        if (canonical == null)
-            return;
-    
-        PotionProcureResult procure = await PotionCmd.TryToProcure(canonical.ToMutable(), this.Owner);
+        await PotionCmd.TryToProcure(canonical.ToMutable(), Owner);
     }
 }
