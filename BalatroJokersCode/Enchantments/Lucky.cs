@@ -21,15 +21,15 @@ public class Lucky() : BalatroJokersEnchantment, IChance
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DisplayVar<Lucky>("BaseChance", e =>
+        new DisplayVar<Lucky>("Numerator", e =>
         {
             var card = e.IsCanonical ? null : e.Card;
             if (card == null) return e.GetNumerator(null).ToString();
             var player = card.IsCanonical ? null : card.Owner;
             return e.GetNumerator(player).ToString();
         }),
-        new DynamicVar("ExtraDamageChance", 3),
-        new DynamicVar("ExtraGoldChance", 5),
+        new DynamicVar("DamageDenominator", 3),
+        new DynamicVar("GoldDenominator", 5),
         new GoldVar(30),
         new DamageVar(5M, ValueProp.Unpowered)
     ];
@@ -37,7 +37,7 @@ public class Lucky() : BalatroJokersEnchantment, IChance
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
         if (cardPlay?.Card.Owner is not { } player || cardPlay?.Card.CanonicalInstance != this.Card.CanonicalInstance) return;
-        if (this.RollChance(Card.Owner, DynamicVars["ExtraDamageChance"].IntValue))
+        if (this.RollChance(Card.Owner, DynamicVars["DamageDenominator"].IntValue))
             await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), player.Creature, DynamicVars.Damage.BaseValue, player.Creature, null);
     }
 
@@ -45,7 +45,7 @@ public class Lucky() : BalatroJokersEnchantment, IChance
     {
         if (cardPlay?.Card.Owner is not { } player) return;
         
-        if (this.RollChance(Card.Owner, DynamicVars["ExtraGoldChance"].IntValue))
+        if (this.RollChance(Card.Owner, DynamicVars["GoldDenominator"].IntValue))
             await PlayerCmd.GainGold(DynamicVars.Gold.BaseValue, player);
     }
 }

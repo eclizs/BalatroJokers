@@ -21,14 +21,14 @@ public class Glass() : BalatroJokersEnchantment, IChance
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DisplayVar<Glass>("BaseChance", e =>
+        new DisplayVar<Glass>("Numerator", e =>
         {
             var card = e.IsCanonical ? null : e.Card;
             if (card == null) return e.GetNumerator(null).ToString();
             var player = card.IsCanonical ? null : card.Owner;
             return e.GetNumerator(player).ToString();
         }),
-        new DynamicVar("ExhaustChance", 4M)
+        new DynamicVar("Denominator", 4M)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [ HoverTipFactory.FromKeyword(CardKeyword.Exhaust) ];
@@ -39,7 +39,7 @@ public class Glass() : BalatroJokersEnchantment, IChance
         if (card.Owner.Creature != this.Card.Owner.Creature)
             return (pileType, position);
         
-        return this.RollChance(this.Card.Owner, DynamicVars["ExhaustChance"].IntValue) ? (PileType.Exhaust, position) : (pileType, position);
+        return this.RollChance(this.Card.Owner, DynamicVars["Denominator"].IntValue) ? (PileType.Exhaust, position) : (pileType, position);
     }
 
     public override decimal EnchantDamageMultiplicative(decimal originalDamage, ValueProp props)
