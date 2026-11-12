@@ -68,5 +68,8 @@
   "BALATROJOKERS-SUPERNOVA.title": "Supernova",
   "BALATROJOKERS-JOKER_STENCIL.description": "Attacks deal [blue]{InitialPercentage}%[/blue] more damage. Deal [blue]{PercentageDecrease}%[/blue] less damage for every card in your [gold]Hand[/gold].",
   "BALATROJOKERS-JOKER_STENCIL.flavor": "",
-  "BALATROJOKERS-JOKER_STENCIL.title": "Joker Stencil"
+  "BALATROJOKERS-JOKER_STENCIL.title": "Joker Stencil",
+  "BALATROJOKERS-EIGHT_BALL.description": "After playing [blue]{Cards}[/blue] {Cards:plural:card|cards} in a single turn, [blue]{Numerator}[/blue] in [blue]{Denominator}[/blue] chance to create a [color=#C093F8]Tarot[/color] card. This effect can be triggered {Repeat:plural:once|[blue]{}[/blue] times} per combat.",
+  "BALATROJOKERS-EIGHT_BALL.flavor": "",
+  "BALATROJOKERS-EIGHT_BALL.title": "8 Ball"
 }

@@ -20,6 +20,7 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
+        TarotHistory.Initialize();
         Type[] modTypes = Assembly.GetExecutingAssembly().GetTypes();
 
         foreach (Type relicType in modTypes
