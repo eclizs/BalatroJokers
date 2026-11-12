@@ -15,7 +15,7 @@ public class StoneWall() : BalatroJokersCard(-1,
     CardType.Skill, CardRarity.Ancient,
     TargetType.None)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [ new BlockVar(10M, ValueProp.Unpowered)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [ new BlockVar(7M, ValueProp.Move)];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable];
 
