@@ -33,13 +33,18 @@ public class Glass() : BalatroJokersEnchantment, IChance
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [ HoverTipFactory.FromKeyword(CardKeyword.Exhaust) ];
 
-    public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(CardModel card, bool isAutoPlay,
-        ResourceInfo resources, PileType pileType, CardPilePosition position)
+    public override CardLocation ModifyCardPlayResultLocation(CardModel card, bool isAutoPlay,
+        ResourceInfo resources, CardLocation location)
     {
         if (card.Owner.Creature != this.Card.Owner.Creature)
-            return (pileType, position);
+            return location;
+
+        if (this.RollChance(this.Card.Owner, DynamicVars["Denominator"].IntValue))
+        {
+            location.pileType = PileType.Exhaust;
+        }
         
-        return this.RollChance(this.Card.Owner, DynamicVars["Denominator"].IntValue) ? (PileType.Exhaust, position) : (pileType, position);
+        return location;
     }
 
     public override decimal EnchantDamageMultiplicative(decimal originalDamage, ValueProp props)
