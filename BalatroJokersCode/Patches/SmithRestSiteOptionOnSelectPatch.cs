@@ -6,23 +6,12 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.RestSite;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace BalatroJokers.BalatroJokersCode.Patches;
 
-[HarmonyPatch(typeof(SmithRestSiteOption), nameof(SmithRestSiteOption.SmithCount), MethodType.Getter)]
-class SmithCountPatch
-{
-    static void Postfix(ref SmithRestSiteOption __instance, ref object __result)
-    {
-        Player owner = (Player) Traverse.Create(__instance).Property("Owner").GetValue();
-        
-        if (Campfire.IsActive(owner))
-            __result = Campfire.UpgradeAmount;
-    }
-}
-
 [HarmonyPatch]
-static class OnSelectPatch
+static class SmithRestSiteOptionOnSelectPatch
 {
     private static FieldInfo? _optionField;
 
@@ -49,15 +38,46 @@ static class OnSelectPatch
         return !Campfire.IsActive(player);
     }
 
+    private static int GetUpgradeCount(SmithRestSiteOption option)
+    {
+        Player player = (Player)Traverse.Create(option).Property("Owner").GetValue();
+        return Campfire.IsActive(player) ? Campfire.UpgradeAmount : 1;
+    }
+
     static IEnumerable<CodeInstruction> Transpiler(
         IEnumerable<CodeInstruction> instructions)
     {
         var codes = instructions.ToList();
+        var promptGetter = AccessTools.PropertyGetter(
+            typeof(CardSelectorPrefs),
+            nameof(CardSelectorPrefs.UpgradeSelectionPrompt))!;
+        var constructor = AccessTools.Constructor(
+            typeof(CardSelectorPrefs), [typeof(LocString), typeof(int)])!;
+        var getUpgradeCount = AccessTools.Method(
+            typeof(SmithRestSiteOptionOnSelectPatch), nameof(GetUpgradeCount))!;
+
+        int countIndex = codes.FindIndex(1, instruction =>
+            instruction.opcode == OpCodes.Newobj && Equals(instruction.operand, constructor));
+
+        if (countIndex < 2 || !codes[countIndex - 1].LoadsConstant(1) ||
+            !codes[countIndex - 2].Calls(promptGetter))
+        {
+            throw new InvalidOperationException(
+                "Could not find the smith CardSelectorPrefs count initializer.");
+        }
+
+        var loadOption = new CodeInstruction(OpCodes.Ldarg_0);
+        codes[countIndex - 1].MoveLabelsTo(loadOption);
+        codes[countIndex - 1].MoveBlocksTo(loadOption);
+        codes[countIndex - 1] = loadOption;
+        codes.Insert(countIndex, new CodeInstruction(OpCodes.Ldfld, _optionField!));
+        codes.Insert(countIndex + 1, new CodeInstruction(OpCodes.Call, getUpgradeCount));
+
         var setter = AccessTools.PropertySetter(
             typeof(CardSelectorPrefs),
             nameof(CardSelectorPrefs.RequireManualConfirmation))!;
         var shouldRequireConfirmation = AccessTools.Method(
-            typeof(OnSelectPatch),
+            typeof(SmithRestSiteOptionOnSelectPatch),
             nameof(ShouldRequireManualConfirmation))!;
 
         for (int i = 1; i < codes.Count; i++)
