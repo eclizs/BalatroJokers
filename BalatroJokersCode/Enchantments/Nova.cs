@@ -10,7 +10,6 @@ namespace BalatroJokers.BalatroJokersCode.Enchantments;
 
 public class Nova() : BalatroJokersEnchantment
 {
-    [SavedProperty]
     private int _extraAmount = 0;
     
     private enum EnchantedCardType
@@ -33,7 +32,8 @@ public class Nova() : BalatroJokersEnchantment
     [
         new DynamicVar("CardType", (decimal) EnchantedCardType.None)
     ];
-
+    
+    [SavedProperty]
     private int ExtraAmount
     {
         get => this._extraAmount;
