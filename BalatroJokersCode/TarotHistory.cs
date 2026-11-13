@@ -2,6 +2,8 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 
+namespace BalatroJokers.BalatroJokersCode;
+
 public static class TarotHistory
 {
     public static readonly SavedSpireField<Player, ModelId> LastUsed =
