@@ -30,7 +30,7 @@ public class Judgement() : BalatroJokersTarotPotion
 
     protected override Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        var relic = RelicFactory.PullNextRelicFromFront(Owner, RelicFactory.RollRarity(Owner),
+        var relic = RelicFactory.PullNextRelicFromFront(Owner, RelicFactory.RollRarity(Owner.RunState.Rng.Niche),
             (r => ModelDb.RelicPool<BalatroJokersRelicPool>().AllRelics.Contains(r))).ToMutable();
         
         RelicCmd.Obtain(relic, Owner);
