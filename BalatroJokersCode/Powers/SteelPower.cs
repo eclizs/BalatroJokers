@@ -56,7 +56,8 @@ public class SteelPower() : BalatroJokersPower
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource,
+        CardPlay? cardPlay)
     {
         return dealer != this.Owner && !this.Owner.Pets.Contains<Creature>(dealer) ||
                !props.IsPoweredAttack() || cardSource == null ? 1M : DynamicVars["CurrentMult"].BaseValue;

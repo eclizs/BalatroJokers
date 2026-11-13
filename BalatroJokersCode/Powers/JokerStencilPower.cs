@@ -1,4 +1,5 @@
 using BalatroJokers.BalatroJokersCode.Powers;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
@@ -15,7 +16,7 @@ public class JokerStencilPower() : BalatroJokersPower
         PowerStackType.Counter;
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource, CardPlay? cardPlay)
     {
         return !props.IsPoweredAttack() || cardSource == null || cardSource.Owner.Creature != this.Owner ? 1M : 1M + Amount / 100M;
     }

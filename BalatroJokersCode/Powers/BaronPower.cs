@@ -14,13 +14,14 @@ public class BaronPower() : BalatroJokersPower
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
-    
+
     public override Decimal ModifyDamageMultiplicative(
         Creature? target,
         Decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource,
+        CardPlay? cardPlay)
     {
         IReadOnlyList<CardModel> cards = PileType.Hand.GetPile(this.Owner.Player).Cards;
         decimal dmgReductionAmt = 0;
