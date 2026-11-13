@@ -15,8 +15,18 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 [Pool(typeof(SharedRelicPool))]
 public class Brainstorm() : BalatroJokersRelic
 {
+    private List<IHoverTip> _copiedRelic = [];
+    
     [SavedProperty]
-    private List<IHoverTip> _extraHoverTips = [];
+    private List<IHoverTip> CopiedRelic
+    {
+        get => _copiedRelic;
+        set
+        {
+            AssertMutable();
+            _copiedRelic = value;
+        }
+    }
     
     public override RelicRarity Rarity =>
         RelicRarity.Rare;
@@ -26,16 +36,16 @@ public class Brainstorm() : BalatroJokersRelic
     private void SetupDynamicText(ModelId relicId)
     {
         RelicModel relicModel = SaveUtil.RelicOrDeprecated(relicId);
-        _extraHoverTips.AddRange(relicModel.HoverTips);
+        CopiedRelic.AddRange(relicModel.HoverTips);
         ((StringVar)base.DynamicVars["StarterRelic"]).StringValue = relicModel.Title.GetFormattedText();
     }
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => this._extraHoverTips;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => this.CopiedRelic;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new StringVar("StarterRelic")];
 
-    public override bool IsAllowed(IRunState runState)
+    protected override bool IsAllowedInternal(IRunState runState)
     {
         return runState.CurrentActIndex >= 1;
     }
