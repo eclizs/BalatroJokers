@@ -15,16 +15,22 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 [Pool(typeof(SharedRelicPool))]
 public class Brainstorm() : BalatroJokersRelic
 {
-    private List<IHoverTip> _copiedRelic = [];
+    private ModelId? _copiedRelic;
+    private List<IHoverTip> _extraHoverTips = [];
     
     [SavedProperty]
-    private List<IHoverTip> CopiedRelic
+    private ModelId? CopiedRelic
     {
         get => _copiedRelic;
         set
         {
             AssertMutable();
-            _copiedRelic = value;
+            _copiedRelic = !(this._copiedRelic != null) ? value : throw new InvalidOperationException("Recursive Core setup called twice!");
+            if (!(this._copiedRelic != null))
+                return;
+            RelicModel relicModel = SaveUtil.RelicOrDeprecated(this._copiedRelic);
+            _extraHoverTips.AddRange(relicModel.HoverTips);
+            ((StringVar)base.DynamicVars["Relic"]).StringValue = relicModel.Title.GetFormattedText();
         }
     }
     
@@ -32,15 +38,8 @@ public class Brainstorm() : BalatroJokersRelic
         RelicRarity.Rare;
 
     public override bool HasUponPickupEffect => true;
-
-    private void SetupDynamicText(ModelId relicId)
-    {
-        RelicModel relicModel = SaveUtil.RelicOrDeprecated(relicId);
-        CopiedRelic.AddRange(relicModel.HoverTips);
-        ((StringVar)base.DynamicVars["StarterRelic"]).StringValue = relicModel.Title.GetFormattedText();
-    }
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => this.CopiedRelic;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => this._extraHoverTips;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new StringVar("StarterRelic")];
@@ -59,12 +58,11 @@ public class Brainstorm() : BalatroJokersRelic
         }
 
         var relicToCopy = Owner.Relics.First();
-        
-        SetupDynamicText(relicToCopy.Id);
+
+        CopiedRelic = relicToCopy.Id;
         
         ModelId sourceId = relicToCopy.CanonicalInstance.Id;
-        RelicModel? canonical;
-        canonical = sourceId == ModelId.none ? null : ModelDb.GetByIdOrNull<RelicModel>(sourceId);
+        RelicModel? canonical = sourceId == ModelId.none ? null : ModelDb.GetByIdOrNull<RelicModel>(sourceId);
         
         if (canonical == null) return;
         
