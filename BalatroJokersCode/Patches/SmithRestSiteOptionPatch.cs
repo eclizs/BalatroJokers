@@ -99,3 +99,20 @@ static class SmithRestSiteOptionOnSelectPatch
             "Could not find the RequireManualConfirmation initializer.");
     }
 }
+
+[HarmonyPatch(typeof(RestSiteOption), nameof(RestSiteOption.Description), MethodType.Getter)]
+static class RestSiteLocalizationPatch
+{
+    static void Postfix(RestSiteOption __instance, ref object __result)
+    {
+        Player? owner = Traverse.Create(__instance).Property("Owner").GetValue<Player>();
+        MainFile.Logger.Info("Owner is " + owner ?? "null");
+        if (owner is not null && Campfire.IsActive(owner) && __instance is SmithRestSiteOption)
+        {
+            __result = new LocString("rest_site_ui",
+                __instance.IsEnabled
+                    ? "OPTION_CAMPFIRE_SMITH.description"
+                    : $"OPTION_{__instance.OptionId}.descriptionDisabled");
+        }
+    }
+}
