@@ -30,7 +30,7 @@ public class Brainstorm() : BalatroJokersRelic
                 return;
             RelicModel relicModel = SaveUtil.RelicOrDeprecated(this._copiedRelic);
             _extraHoverTips.AddRange(relicModel.HoverTips);
-            ((StringVar)base.DynamicVars["Relic"]).StringValue = relicModel.Title.GetFormattedText();
+            ((StringVar)base.DynamicVars["StarterRelic"]).StringValue = relicModel.Title.GetFormattedText();
         }
     }
     
