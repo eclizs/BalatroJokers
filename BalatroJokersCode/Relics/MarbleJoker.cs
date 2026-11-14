@@ -31,10 +31,10 @@ public class MarbleJoker() : BalatroJokersRelic
         PlayerChoiceContext choiceContext,
         ICombatState combatState)
     {
-        if (player != this.Owner || this.Owner.PlayerCombatState.TurnNumber != 1)
+        if (combatState.RunState.CurrentRoom != null && (player != this.Owner || this.Owner.PlayerCombatState.TurnNumber != 1 || combatState.RunState.CurrentRoom.RoomType is not RoomType.Elite))
             return;
         this.Flash();
-        for (int i = 0; (Decimal) i < this.DynamicVars.Cards.BaseValue; ++i)
+        for (int i = 0; i < DynamicVars.Cards.BaseValue; ++i)
             CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(combatState.CreateCard((CardModel) ModelDb.Card<StoneWall>(), this.Owner), PileType.Draw, this.Owner, CardPilePosition.Random));
     }
 }
