@@ -26,7 +26,7 @@ public class EightBall() : BalatroJokersRelic, IChance
     
     public override RelicRarity Rarity => RelicRarity.Rare;
     
-    public override bool ShowCounter => CombatManager.Instance.IsInProgress;
+    public override bool ShowCounter => CombatManager.Instance.IsInProgress && _triggerCount < DynamicVars.Repeat.BaseValue;
 
     public override int DisplayAmount => this._cardsPlayedThisTurn;
 
@@ -45,8 +45,23 @@ public class EightBall() : BalatroJokersRelic, IChance
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(BalatroJokersHoverTips.Tarot)];
+    
+    private int CardsPlayedThisTurn
+    {
+        get => this._cardsPlayedThisTurn;
+        set
+        {
+            this.AssertMutable();
+            this._cardsPlayedThisTurn = value;
+            this.UpdateDisplay();
+        }
+    }
 
-    public PotionModel? LastTarotOrPlanetUsed = null;
+    private void UpdateDisplay()
+    {
+        this.Status = this.CardsPlayedThisTurn == this.DynamicVars.Cards.IntValue - 1 ? RelicStatus.Active : RelicStatus.Normal;
+        this.InvokeDisplayAmountChanged();
+    }
 
     public override Task AfterPotionUsed(PotionModel potion, Creature? target)
     {
@@ -67,12 +82,11 @@ public class EightBall() : BalatroJokersRelic, IChance
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != Owner || !CombatManager.Instance.IsInProgress)
+        if (cardPlay.Card.Owner != Owner || !CombatManager.Instance.IsInProgress || _triggerCount >= DynamicVars.Repeat.BaseValue)
             return;
-        ++_cardsPlayedThisTurn;
-        InvokeDisplayAmountChanged();
+        CardsPlayedThisTurn++;
 
-        if (_cardsPlayedThisTurn == DynamicVars.Cards.BaseValue && _triggerCount < DynamicVars.Repeat.BaseValue)
+        if (CardsPlayedThisTurn == DynamicVars.Cards.BaseValue)
         {
             if (this.RollChance(Owner, DynamicVars["Denominator"].IntValue))
             {
@@ -88,24 +102,23 @@ public class EightBall() : BalatroJokersRelic, IChance
     {
         if (room is not CombatRoom) return Task.CompletedTask;
         
-        _cardsPlayedThisTurn = 0;
-        InvokeDisplayAmountChanged();
+        CardsPlayedThisTurn = 0;
         
         return Task.CompletedTask;
     }
 
-    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side,
+        IReadOnlyList<Creature> participants,
+        ICombatState combatState)
     {
-        _cardsPlayedThisTurn = 0;
-        InvokeDisplayAmountChanged();
-
+        CardsPlayedThisTurn = 0;
+        
         return Task.CompletedTask;
     }
 
     public override Task AfterCombatEnd(CombatRoom _)
     {
-        this._cardsPlayedThisTurn = 0;
-        InvokeDisplayAmountChanged();
+        CardsPlayedThisTurn = 0;
 
         return Task.CompletedTask;
     }
