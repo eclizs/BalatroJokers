@@ -94,13 +94,22 @@ public class JokerStencil() : BalatroJokersRelic
     
     public override async Task AfterCardEnteredCombat(CardModel card) => await ChangePowerAmount();
 
-    public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
-    {
-        if (oldPileType == PileType.Hand && card.Pile?.Type == PileType.Play)
-            return;
-        
+    public override async Task AfterCardExhausted(
+        PlayerChoiceContext choiceContext,
+        CardModel card,
+        bool causedByEthereal) =>
         await ChangePowerAmount();
-    }
+
+    public override async Task AfterCardDiscarded(
+        PlayerChoiceContext choiceContext,
+        CardModel card) =>
+        await ChangePowerAmount();
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay) =>
+        await ChangePowerAmount();
+
+    public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw) =>
+        await ChangePowerAmount();
 
     public override Task AfterCombatVictory(CombatRoom room)
     {
