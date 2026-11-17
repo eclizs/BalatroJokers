@@ -23,4 +23,6 @@
   "BALATROJOKERS-STEEL_POWER.description": "Attacks deal additional damage",
   "BALATROJOKERS-STEEL_POWER.smartDescription": "Attacks deal [blue]{CurrentMult:percentMore()}%[/blue] more damage.",
   "BALATROJOKERS-STEEL_POWER.title": "Steel"
+  "BALATROJOKERS-STEEL_POWER.smartDescription": "Attacks deal [blue]{CurrentMult}X[/blue] more damage.",
+  "BALATROJOKERS-STEEL_POWER.title": "Steel",
 }
