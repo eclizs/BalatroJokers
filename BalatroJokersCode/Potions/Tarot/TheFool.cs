@@ -18,7 +18,8 @@ public class TheFool() : BalatroJokersTarotPotion
     private List<IHoverTip> _extraHoverTips = 
     [
         HoverTipFactory.Static(BalatroJokersHoverTips.Tarot),
-        HoverTipFactory.Static(BalatroJokersHoverTips.Planet)
+        HoverTipFactory.Static(BalatroJokersHoverTips.Planet),
+        HoverTipFactory.Static(BalatroJokersHoverTips.Joker)
     ];
     
     public override PotionRarity Rarity => PotionRarity.Token;

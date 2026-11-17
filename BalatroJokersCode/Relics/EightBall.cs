@@ -44,7 +44,11 @@ public class EightBall() : BalatroJokersRelic, IChance
         new RepeatVar(1)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(BalatroJokersHoverTips.Tarot)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [
+            HoverTipFactory.Static(BalatroJokersHoverTips.Tarot),
+            HoverTipFactory.Static(BalatroJokersHoverTips.Joker)
+        ];
     
     private int CardsPlayedThisTurn
     {

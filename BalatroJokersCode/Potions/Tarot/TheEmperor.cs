@@ -18,7 +18,11 @@ public class TheEmperor() : BalatroJokersTarotPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PotionAmount", 2M)];
 
-    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(BalatroJokersHoverTips.Tarot)];
+    public override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [
+            HoverTipFactory.Static(BalatroJokersHoverTips.Tarot),
+            HoverTipFactory.Static(BalatroJokersHoverTips.Joker)
+        ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
