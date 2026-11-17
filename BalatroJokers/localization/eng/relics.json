@@ -74,5 +74,14 @@
   "BALATROJOKERS-EIGHT_BALL.title": "8 Ball",
   "BALATROJOKERS-OOPS_ALL_SIXES.description": "Double all listed probabilities (ex: [blue]1[/blue] in [blue]3[/blue] -> [blue]2[/blue] in [blue]3[/blue])",
   "BALATROJOKERS-OOPS_ALL_SIXES.flavor": "",
-  "BALATROJOKERS-OOPS_ALL_SIXES.title": "Oops! All 6s"
+  "BALATROJOKERS-OOPS_ALL_SIXES.title": "Oops! All 6s",
+  "BALATROJOKERS-FOIL_JIMBO.description": "At the start of combat, gain [blue]{DexterityPower}[/blue] [gold]Dexterity[/gold].",
+  "BALATROJOKERS-FOIL_JIMBO.flavor": "",
+  "BALATROJOKERS-FOIL_JIMBO.title": "Foil Jimbo",
+  "BALATROJOKERS-HOLOGRAPHIC_JIMBO.description": "At the start of combat, gain [blue]{StrengthPower}[/blue] [gold]Strength[/gold].",
+  "BALATROJOKERS-HOLOGRAPHIC_JIMBO.flavor": "",
+  "BALATROJOKERS-HOLOGRAPHIC_JIMBO.title": "Holographic Jimbo",
+  "BALATROJOKERS-POLYCHROME_JIMBO.description": "Deal [blue]{Mult:percentMore()}%[/blue] more damage.",
+  "BALATROJOKERS-POLYCHROME_JIMBO.flavor": "",
+  "BALATROJOKERS-POLYCHROME_JIMBO.title": "Polychrome Jimbo"
 }
