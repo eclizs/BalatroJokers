@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
@@ -26,6 +27,13 @@ public class TheWheelOfFortune() : BalatroJokersTarotPotion, IChance
             return p.GetNumerator(player).ToString();
         }),
         new DynamicVar("Denominator", 4M)
+    ];
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        ..HoverTipFactory.FromRelic<FoilJimbo>(),
+        ..HoverTipFactory.FromRelic<HolographicJimbo>(),
+        ..HoverTipFactory.FromRelic<PolychromeJimbo>()
     ];
 
     protected override Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
