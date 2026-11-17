@@ -120,21 +120,3 @@ static class MakeFullArt
         private static readonly CardModel ancientSkill = ModelDb.Card<Apotheosis>();
     }
 }
-
-[HarmonyPatch(typeof(CardModel), nameof(CardModel.Title), MethodType.Getter)]
-public class CardTitleIntercept
-{
-    [HarmonyPostfix]
-    internal static void Intercept(ref CardModel? __instance, ref String __result)
-    {
-        if (__instance == null || __instance.CanonicalInstance != ModelDb.Card<StoneWall>()) return;
-        __result = FormattedText(__instance);
-    }
-
-    private static string FormattedText(CardModel card)
-    {
-        if (!card.IsUpgraded) return "";
-        if (card.MaxUpgradeLevel <= 1) return "+";
-        return $"+{card.CurrentUpgradeLevel}";
-    }
-}
