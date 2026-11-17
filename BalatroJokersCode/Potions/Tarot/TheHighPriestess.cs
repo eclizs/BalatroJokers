@@ -13,7 +13,7 @@ namespace BalatroJokers.BalatroJokersCode.Potions.Tarot;
 public class TheHighPriestess() : BalatroJokersTarotPotion
 {
     public override PotionRarity Rarity => PotionRarity.Token;
-    public override PotionUsage Usage => PotionUsage.None;
+    public override PotionUsage Usage => PotionUsage.AnyTime;
     public override TargetType TargetType => TargetType.Self;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PotionAmount", 2M)];
