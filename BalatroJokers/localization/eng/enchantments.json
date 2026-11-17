@@ -12,5 +12,8 @@
   "BALATROJOKERS-GLASS.title": "Glass",
   "BALATROJOKERS-GOLD.description": "At the end of your turn, if this card is in your [gold]Hand[/gold], gain [blue]{Amount}[/blue] [gold]Gold[/gold].",
   "BALATROJOKERS-GOLD.extraCardText": "At the end of your turn, if this is in your [gold]Hand[/gold], gain [blue]{Amount}[/blue] [gold]Gold[/gold].",
-  "BALATROJOKERS-GOLD.title": "Gold"
+  "BALATROJOKERS-GOLD.title": "Gold",
+  "BALATROJOKERS-WILD.description": "When played, [gold]Transform[/gold] this card into a random Attack or Skill of ANY rarity and ANY color this combat.",
+  "BALATROJOKERS-WILD.extraCardText": "[gold]Transform[/gold] this card into a random Attack or Skill.",
+  "BALATROJOKERS-WILD.title": "Wild"
 }
