@@ -25,7 +25,7 @@
   "BALATROJOKERS-JUSTICE.title": "Justice",
   "BALATROJOKERS-THE_HERMIT.description": "Double [gold]Gold[/gold] (Max [blue]{Gold}[/blue] [gold]Gold[/gold]).",
   "BALATROJOKERS-THE_HERMIT.title": "The Hermit",
-  "BALATROJOKERS-THE_WHEEL_OF_FORTUNE.description": "",
+  "BALATROJOKERS-THE_WHEEL_OF_FORTUNE.description": "[blue]{Numerator}[/blue] in [blue]{Denominator}[/blue] chance to obtain [gold]Foil Jimbo[/gold], [gold]Holographic Jimbo[/gold], or [gold]Polychrome Jimbo[/gold].",
   "BALATROJOKERS-THE_WHEEL_OF_FORTUNE.title": "The Wheel of Fortune",
   "BALATROJOKERS-STRENGTH.description": "Permanently [gold]Upgrade[/gold] {Cards:a card|up to [blue]{}[/blue] cards} in your [gold]Hand[/gold].",
   "BALATROJOKERS-STRENGTH.selectionScreenPrompt": "Choose up to [blue]2[/blue] cards to [gold]Upgrade[/gold].",
