@@ -54,10 +54,11 @@ public abstract class TransformingTarot : BalatroJokersTarotPotion
     public override TargetType TargetType => TargetType.AnyPlayer;
     
     protected abstract CardType TransformType { get; }
+    protected abstract int CardAmount { get; }
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2)
+        new CardsVar(CardAmount)
     ];
 
     private CardModel GetCanonicalForTransform(CardModel original)
@@ -86,6 +87,7 @@ public abstract class TransformingTarot : BalatroJokersTarotPotion
             
             var result1 = await CardCmd.Transform(card, combatReplacement);
             await Cmd.Wait(0.5f);
+            
             if (card.DeckVersion != null && !card.Keywords.Contains(CardKeyword.Eternal))
             {
                 var deckReplacement = player.RunState.CreateCard(canonical, player);
