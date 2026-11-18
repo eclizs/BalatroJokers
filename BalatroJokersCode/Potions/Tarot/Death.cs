@@ -37,7 +37,8 @@ public class Death() : BalatroJokersTarotPotion
         
         if (cardList.Count != 2) return;
         var leftCard = cardList[0];
-        var rightCardId = cardList[1].CanonicalInstance.Id;
+        var rightCard = cardList[1];
+        var rightCardId = rightCard.CanonicalInstance.Id;
         var rightCardEnchantment = cardList[1].Enchantment;
         var EnchantmentId = rightCardEnchantment?.CanonicalInstance.Id;
         var player = leftCard.Owner;
@@ -53,6 +54,14 @@ public class Death() : BalatroJokersTarotPotion
 
         var combatReplacement = combatState.CreateCard(canonical, player);
 
+        if (rightCard.IsUpgraded)
+        {
+            for (int i = 0; i < rightCard.CurrentUpgradeLevel; i++)
+            {
+                CardCmd.Upgrade(combatReplacement);
+            }
+        }
+
         if (rightCardEnchantment != null && EnchantmentId != null)
         {
             CardCmd.Enchant(ModelDb.GetByIdOrNull<EnchantmentModel>(EnchantmentId)?.ToMutable(), combatReplacement, rightCardEnchantment.Amount);
@@ -64,6 +73,13 @@ public class Death() : BalatroJokersTarotPotion
         if (deckVersion != null && !leftCard.Keywords.Contains(CardKeyword.Eternal))
         {
             var deckReplacement = player.RunState.CreateCard(canonical, player);
+            if (rightCard.DeckVersion is { IsUpgraded: true })
+            {
+                for (int i = 0; i < rightCard.DeckVersion.CurrentUpgradeLevel; i++)
+                {
+                    CardCmd.Upgrade(deckReplacement);
+                }
+            }
             if (rightCardEnchantment != null && EnchantmentId != null)
             {
                 CardCmd.Enchant(ModelDb.GetByIdOrNull<EnchantmentModel>(EnchantmentId)?.ToMutable(), deckReplacement, rightCardEnchantment.Amount);
