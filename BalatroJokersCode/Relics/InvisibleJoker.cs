@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
@@ -15,19 +16,20 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 public class InvisibleJoker() : BalatroJokersRelic
 {
     private const int RemainingCombats = 2;
-    private int _combatsFinished;
-    private bool _gaveRelic;
+    private int _combatsFinished = 0;
+    private bool _gaveRelic = false;
     
     public override RelicRarity Rarity => RelicRarity.Rare;
 
     public override bool ShowCounter => !IsUsedUp;
 
-    public override int DisplayAmount => CombatsFinished;
+    public override int DisplayAmount => RemainingCombats - CombatsFinished;
     
     public override bool IsUsedUp => this.GaveRelic;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RemainingCombats", RemainingCombats)];
-
+    
+    [SavedProperty]
     private int CombatsFinished
     {
         get => _combatsFinished;
@@ -38,7 +40,8 @@ public class InvisibleJoker() : BalatroJokersRelic
             this.InvokeDisplayAmountChanged();
         }
     }
-
+    
+    [SavedProperty]
     private bool GaveRelic
     {
         get => _gaveRelic;
