@@ -18,7 +18,6 @@ public class Temperance() : BalatroJokersTarotPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new StringVar("CurrentAmount"),
         new DynamicVar("CommonAmount", 10M),
         new DynamicVar("UncommonAmount", 20M),
         new DynamicVar("RareAmount", 30M),
@@ -33,12 +32,6 @@ public class Temperance() : BalatroJokersTarotPotion
         
         var total = commonCount*DynamicVars["CommonAmount"].IntValue + uncommonCount*DynamicVars["UncommonAmount"].IntValue + rareCount*DynamicVars["RareAmount"].IntValue;
         return Math.Min(total, this.DynamicVars.Gold.IntValue);
-    }
-    
-    public override Task AfterRoomEntered(AbstractRoom room)
-    {
-        ((StringVar)DynamicVars["CurrentAmount"]).StringValue = CalculateGold(Owner).ToString();
-        return Task.CompletedTask;
     }
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
