@@ -23,14 +23,7 @@ public class BaronPower() : BalatroJokersPower
         CardModel? cardSource,
         CardPlay? cardPlay)
     {
-        IReadOnlyList<CardModel> cards = PileType.Hand.GetPile(this.Owner.Player).Cards;
-        decimal dmgReductionAmt = 0;
-        foreach (var card in cards)
-        {
-            if (card.Rarity == CardRarity.Rare) dmgReductionAmt += 0.05M;
-        }
-        
-        return target != this.Owner || !props.IsPoweredAttack() ? 1M : (1M - dmgReductionAmt);
+        return target != this.Owner || !props.IsPoweredAttack() ? 1M : (1M - Amount / 100M);
     }
     
     public override async Task AfterSideTurnEnd(
