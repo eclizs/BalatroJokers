@@ -36,7 +36,7 @@ public class Glass() : BalatroJokersEnchantment, IChance
     public override CardLocation ModifyCardPlayResultLocation(CardModel card, bool isAutoPlay,
         ResourceInfo resources, CardLocation location)
     {
-        if (card.Owner.Creature != this.Card.Owner.Creature)
+        if (card.Owner.Creature != Card.Owner.Creature || card != Card)
             return location;
 
         if (this.RollChance(this.Card.Owner, DynamicVars["Denominator"].IntValue))
