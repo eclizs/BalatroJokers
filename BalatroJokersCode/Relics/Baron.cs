@@ -32,9 +32,21 @@ public class Baron() : BalatroJokersRelic
 
     public override Task AfterRoomEntered(AbstractRoom room)
     {
-        if (!(room is CombatRoom))
+        if (room is not CombatRoom)
             return Task.CompletedTask;
         foreach (CardModel allCard in this.Owner.PlayerCombatState.AllCards)
+        {
+            if (Baron.CanAffect(allCard))
+                CardCmd.ApplyKeyword(allCard, CardKeyword.Retain);
+        }
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterObtained()
+    {
+        if (Owner.RunState.CurrentRoom is not CombatRoom) return Task.CompletedTask;
+        
+        foreach (CardModel allCard in Owner.PlayerCombatState.AllCards)
         {
             if (Baron.CanAffect(allCard))
                 CardCmd.ApplyKeyword(allCard, CardKeyword.Retain);
