@@ -123,6 +123,7 @@ public class EightBall() : BalatroJokersRelic, IChance
     public override Task AfterCombatEnd(CombatRoom _)
     {
         CardsPlayedThisTurn = 0;
+        _triggerCount = 0;
 
         return Task.CompletedTask;
     }
