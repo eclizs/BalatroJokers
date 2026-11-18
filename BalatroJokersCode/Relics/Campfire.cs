@@ -15,7 +15,7 @@ public class Campfire() : BalatroJokersRelic
     
     public static bool IsActive(Player player)
     {
-        return player.Relics.OfType<Campfire>().Any();
+        return player.Relics.OfType<Campfire>().Any(r => !r.IsMelted);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

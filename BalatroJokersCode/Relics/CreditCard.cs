@@ -13,7 +13,7 @@ public class CreditCard() : BalatroJokersRelic
     
     public static bool IsActive(Player player)
     {
-        return player.Relics.OfType<CreditCard>().Any();
+        return player.Relics.OfType<CreditCard>().Any(r => !r.IsMelted);
     }
 
     public static int GetAvailableGold(Player player)

@@ -13,7 +13,7 @@ public static class ChanceMethods
 {
     public static int GetNumerator(this IChance _, Player? player)
     {
-        int? jokerCount = player?.Relics.Count(r => r.CanonicalInstance == ModelDb.Relic<OopsAllSixes>());
+        int? jokerCount = player?.Relics.Count(r => r.CanonicalInstance == ModelDb.Relic<OopsAllSixes>() && !r.IsMelted);
         if (jokerCount is null or 0) return 1;
         return (int)Math.Pow(2, jokerCount.Value);
     }
