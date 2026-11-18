@@ -28,4 +28,15 @@ public class PolychromeJimbo() : BalatroJokersRelic
         PolychromePower? polychromePower =
             await PowerCmd.Apply<PolychromePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1M, null, null);
     }
+
+    public override async Task AfterObtained()
+    {
+        if (Owner.RunState.CurrentRoom is not CombatRoom) return;
+        
+        Flash();
+
+        if (Owner.HasPower<PolychromePower>()) return;
+        PolychromePower? polychromePower =
+            await PowerCmd.Apply<PolychromePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1M, null, null);
+    }
 }
