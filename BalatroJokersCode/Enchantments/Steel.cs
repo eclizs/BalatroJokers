@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace BalatroJokers.BalatroJokersCode.Enchantments;
 
@@ -18,6 +19,7 @@ public class Steel() : BalatroJokersEnchantment
 
     private Task ApplyPower()
     {
+        if (Card.Owner.RunState.CurrentRoom is not CombatRoom) return Task.CompletedTask;
         var hand = PileType.Hand.GetPile(this.Card.Owner).Cards;
 
         if (!hand.Contains(this.Card) || Card.Owner.HasPower<SteelPower>()) return Task.CompletedTask;

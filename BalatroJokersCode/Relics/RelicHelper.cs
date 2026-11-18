@@ -102,7 +102,7 @@ public abstract class MatchingCardPowerRelic<TPower> : BalatroJokersRelic
 
     public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
     {
-        if (oldPileType == PileType.Hand && card.Pile?.Type == PileType.Play)
+        if (oldPileType == PileType.Hand && card.Pile?.Type == PileType.Play || !card.IsInCombat)
             return Task.CompletedTask;
 
         return ChangePowerStatus();
