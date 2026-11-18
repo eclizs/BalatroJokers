@@ -26,14 +26,16 @@ public class Death() : BalatroJokersTarotPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        if (PileType.Hand.GetPile(Owner).Cards.Count < 2) return;
+        if (target?.Player == null) return;
+        if (PileType.Hand.GetPile(target.Player).Cards.Count < 2) return;
         CardSelectorPrefs prefs = new CardSelectorPrefs(this.SelectionScreenPrompt, 2);
         
-        if (target?.Player == null) return;
         
         var choiceOfCards = await CardSelectCmd.FromHand(choiceContext, target.Player, prefs, (c => c is { IsTransformable: true }), this);
 
         var cardList = choiceOfCards.ToList();
+        
+        if (cardList.Count != 2) return;
         var leftCard = cardList[0];
         var rightCardId = cardList[1].CanonicalInstance.Id;
         var rightCardEnchantment = cardList[1].Enchantment;
