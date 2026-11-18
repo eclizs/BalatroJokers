@@ -54,6 +54,7 @@ public abstract class TransformingTarot : BalatroJokersTarotPotion
     public override TargetType TargetType => TargetType.AnyPlayer;
     
     protected abstract CardType TransformType { get; }
+    
     protected abstract int CardAmount { get; }
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -61,11 +62,13 @@ public abstract class TransformingTarot : BalatroJokersTarotPotion
         new CardsVar(CardAmount)
     ];
 
+    protected virtual bool CardIsValid(CardModel card) => card.Type == TransformType;
+
     private CardModel GetCanonicalForTransform(CardModel original)
     {
         var card = CardFactory.CreateRandomCardForTransform(original,
             Owner.Character.CardPool.GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
-                .Where(c => c.Type == TransformType), true, Owner.RunState.Rng.CombatCardGeneration);
+                .Where(CardIsValid), true, Owner.RunState.Rng.CombatCardGeneration);
 
         return card.CanonicalInstance ?? original.CanonicalInstance;
     }
