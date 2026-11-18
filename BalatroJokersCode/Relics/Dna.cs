@@ -103,12 +103,8 @@ public class Dna() : BalatroJokersRelic
             if (lastCardPlayed == null) return;
             
             CardModel clonedCard = this.Owner.RunState.CloneCard(lastCardPlayed);
+            
             CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(clonedCard, PileType.Deck, clonedBy: (AbstractModel) this));
-
-            CardModel? addCard = this.Owner.Creature.CombatState?.CreateCard(lastCardPlayed.CanonicalInstance, this.Owner);
-            if(addCard == null) return;
-            if (lastCardPlayed.IsUpgraded) CardCmd.Upgrade(addCard);
-            await CardPileCmd.AddGeneratedCardToCombat(addCard, PileType.Hand, this.Owner);
             
             this.CombatsLeft--;
         }
