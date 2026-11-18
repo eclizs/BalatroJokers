@@ -50,11 +50,9 @@ public class TheFool() : BalatroJokersTarotPotion
         {
             case BalatroJokersTarotPotionPool:
                 ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[color=#C093F8]{potion.Title.GetFormattedText()}[/color]" ?? "";
-                _extraHoverTips.AddRange(potion.HoverTips);
                 break;
             case  BalatroJokersPlanetPotionPool:
                 ((StringVar)DynamicVars["LastTarotOrPlanetUsed"]).StringValue = $"[color=#96E3FC]{potion.Title.GetFormattedText()}[/color]" ?? "";
-                _extraHoverTips.AddRange(potion.HoverTips);
                 break;
         }
         return Task.CompletedTask;
