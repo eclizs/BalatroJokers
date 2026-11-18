@@ -64,7 +64,7 @@ public abstract class TransformingTarot : BalatroJokersTarotPotion
 
     protected virtual bool CardIsValid(CardModel card) => card.Type == TransformType;
 
-    private CardModel GetCanonicalForTransform(CardModel original)
+    protected virtual CardModel GetCanonicalForTransform(CardModel original)
     {
         var card = CardFactory.CreateRandomCardForTransform(original,
             Owner.Character.CardPool.GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
