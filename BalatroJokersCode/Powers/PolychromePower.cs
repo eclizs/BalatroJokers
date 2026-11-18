@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BalatroJokers.BalatroJokersCode.Powers;
@@ -22,7 +23,7 @@ public class PolychromePower() : BalatroJokersPower
     {
         var player = Owner.Player;
         
-        if (player == null) return Task.CompletedTask;
+        if (player?.RunState.CurrentRoom is not CombatRoom room) return Task.CompletedTask;
 
         var amount = player.Relics.Count(r => r.CanonicalInstance == ModelDb.Relic<PolychromeJimbo>());
         
