@@ -36,7 +36,7 @@ public class Lucky() : BalatroJokersEnchantment, IChance
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay?.Card.Owner is not { } player || cardPlay?.Card.CanonicalInstance != this.Card.CanonicalInstance) return;
+        if (cardPlay?.Card.Owner is not { } player || cardPlay?.Card != this.Card) return;
         if (this.RollChance(Card.Owner, DynamicVars["DamageDenominator"].IntValue))
             await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), player.Creature, DynamicVars.Damage.BaseValue, player.Creature, null);
     }
