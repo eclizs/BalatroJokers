@@ -37,7 +37,7 @@ public abstract class EnchantingTarot<TEnchant> : BalatroJokersTarotPotion
         foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, target.Player, prefs, (c => canonicalEnchantment.CanEnchant(c)), this))
         {
             CardCmd.Enchant(canonicalEnchantment.ToMutable(), card, EnchantAmount);
-            if (card.DeckVersion != null)
+            if (card.DeckVersion != null && canonicalEnchantment.CanEnchant(card.DeckVersion))
             {
                 CardCmd.Enchant(canonicalEnchantment.ToMutable(), card.DeckVersion, EnchantAmount);
                 CardCmd.Preview(card.DeckVersion);
