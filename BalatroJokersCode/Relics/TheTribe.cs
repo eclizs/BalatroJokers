@@ -24,7 +24,8 @@ public class TheTribe() : BalatroJokersRelic
     {
         None,
         Type,
-        Rarity
+        Rarity,
+        Both
     }
 
     private MatchKind _matchKind;
@@ -123,12 +124,13 @@ public class TheTribe() : BalatroJokersRelic
                     return;
                 }
 
-                _matchKind = sameType ? MatchKind.Type : MatchKind.Rarity;
+                _matchKind = sameType ? (sameRarity ? MatchKind.Both : MatchKind.Type) : MatchKind.Rarity;
                 CardsPlayed = 2;
                 break;
             default:
-                if (_matchKind == MatchKind.Type && type == CardTypeToPlay ||
-                    _matchKind == MatchKind.Rarity && rarity == CardRarityToPlay)
+                if ((_matchKind == MatchKind.Type && type == CardTypeToPlay) ||
+                    (_matchKind == MatchKind.Rarity && rarity == CardRarityToPlay) ||
+                    (_matchKind == MatchKind.Both && (rarity == CardRarityToPlay || type == CardTypeToPlay)))
                 {
                     CardsPlayed = 3;
                 }
