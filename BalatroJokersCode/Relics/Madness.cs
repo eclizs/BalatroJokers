@@ -20,11 +20,8 @@ public class Madness() : BalatroJokersRelic
     
     private string _lastDestroyedRelicName;
     
-    private string _destroyedRelicList;
-    
-    private List<IHoverTip> _extraHoverTips = [];
+    private string? _destroyedRelicList;
 
-    
     public override RelicRarity Rarity => RelicRarity.Shop;
     
     [SavedProperty]
@@ -51,39 +48,29 @@ public class Madness() : BalatroJokersRelic
     }
 
     [SavedProperty]
-    private string DestroyedRelicList
+    private string? DestroyedRelicList
     {
         get => this._destroyedRelicList;
         set
         {
             this.AssertMutable();
             this._destroyedRelicList = value;
-            UpdateDestroyedRelicHoverTip();
         }
     }
     
-    private void UpdateDestroyedRelicHoverTip()
+    protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
-        LocString description = new(
-            "relics",
-            "BALATROJOKERS-MADNESS.destroyedRelic");
-
-        description.Add("RelicList", _destroyedRelicList ?? "");
-
-        var updatedTip = new HoverTip(description);
-
-        if (_extraHoverTips.Count == 0)
+        get
         {
-            _extraHoverTips.Add(updatedTip);
-        }
-        else
-        {
-            _extraHoverTips[0] = updatedTip;
+            if (string.IsNullOrEmpty(DestroyedRelicList))
+                return [];
+
+            LocString description = new("relics", "BALATROJOKERS-MADNESS.destroyedRelic");
+            description.Add("RelicList", DestroyedRelicList);
+            return [new HoverTip(description)];
         }
     }
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => this._extraHoverTips;
-    
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<MadnessPower>(this.PowerAmount),
