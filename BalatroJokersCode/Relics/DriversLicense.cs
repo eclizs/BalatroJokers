@@ -19,7 +19,7 @@ public class DriversLicense() : BalatroJokersRelic
 {
     private bool _powerApplied;
     
-    public override RelicRarity Rarity => RelicRarity.Rare;
+    public override RelicRarity Rarity => RelicRarity.Shop;
     
     private bool PowerApplied
     {
