@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Rooms;
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class EightBall() : BalatroJokersRelic, IChance, ITarot
+public class EightBall() : BalatroJokersRelic, IChance, IPotionHandler
 {
     private int _cardsPlayedThisTurn;
     private int _triggerCount;

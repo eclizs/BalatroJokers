@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Rooms;
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class Hallucination() : BalatroJokersRelic, IChance, ITarot
+public class Hallucination() : BalatroJokersRelic, IChance, IPotionHandler
 {
     public override RelicRarity Rarity =>
         RelicRarity.Common;
