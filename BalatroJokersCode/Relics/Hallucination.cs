@@ -36,7 +36,7 @@ public class Hallucination() : BalatroJokersRelic, IChance, IPotionHandler
         HoverTipFactory.Static(BalatroJokersHoverTips.Joker)
     ];
 
-    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdateTarotHistory(potion, Owner);
+    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdatePotionHistory(potion, Owner);
 
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
@@ -45,7 +45,7 @@ public class Hallucination() : BalatroJokersRelic, IChance, IPotionHandler
         if (this.RollChance(Owner, DynamicVars["Denominator"].IntValue))
         {
             Flash();
-            PotionProcureResult procure = await this.CreateTarot(Owner);
+            PotionProcureResult procure = await this.CreatePotion(Owner);
         }
     }
 }

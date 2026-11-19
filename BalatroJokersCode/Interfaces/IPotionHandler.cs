@@ -14,7 +14,7 @@ public interface IPotionHandler
 
 public static class TarotMethods
 {
-    public static Task UpdateTarotHistory(this IPotionHandler _, PotionModel potion, Player player)
+    public static Task UpdatePotionHistory(this IPotionHandler _, PotionModel potion, Player player)
     {
         if (player is null || potion.Owner != player || potion is TheFool) return Task.CompletedTask;
 
@@ -30,7 +30,7 @@ public static class TarotMethods
         return Task.CompletedTask;
     }
 
-    public static async Task<PotionProcureResult> CreateTarot(this IPotionHandler _, Player player)
+    public static async Task<PotionProcureResult> CreatePotion(this IPotionHandler _, Player player)
     {
         var tarots = ModelDb.PotionPool<BalatroJokersTarotPotionPool>().AllPotions.ToList();
         var randomTarot = player.RunState.Rng.CombatPotionGeneration.NextItem(tarots);

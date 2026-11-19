@@ -64,7 +64,7 @@ public class EightBall() : BalatroJokersRelic, IChance, IPotionHandler
         this.InvokeDisplayAmountChanged();
     }
 
-    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdateTarotHistory(potion, Owner);
+    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdatePotionHistory(potion, Owner);
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -77,7 +77,7 @@ public class EightBall() : BalatroJokersRelic, IChance, IPotionHandler
             if (this.RollChance(Owner, DynamicVars["Denominator"].IntValue))
             {
                 Flash();
-                PotionProcureResult procure = await this.CreateTarot(Owner);
+                PotionProcureResult procure = await this.CreatePotion(Owner);
                 _triggerCount++;
             }
         }
