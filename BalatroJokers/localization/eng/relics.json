@@ -83,5 +83,8 @@
   "BALATROJOKERS-HOLOGRAPHIC_JIMBO.title": "Holographic Jimbo",
   "BALATROJOKERS-POLYCHROME_JIMBO.description": "Deal [blue]{Mult:percentMore()}%[/blue] more damage.",
   "BALATROJOKERS-POLYCHROME_JIMBO.flavor": "",
-  "BALATROJOKERS-POLYCHROME_JIMBO.title": "Polychrome Jimbo"
+  "BALATROJOKERS-POLYCHROME_JIMBO.title": "Polychrome Jimbo",
+  "BALATROJOKERS-HALLUCINATION.description": "[blue]{Numerator}[/blue] in [blue]{Denominator}[/blue] chance to create a [color=#C093F8]Tarot[/color] card when you enter a Treasure Room.",
+  "BALATROJOKERS-HALLUCINATION.flavor": "",
+  "BALATROJOKERS-HALLUCINATION.title": "Hallucination"
 }
