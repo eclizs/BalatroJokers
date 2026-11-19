@@ -19,7 +19,7 @@ using MegaCrit.Sts2.Core.Rooms;
 namespace BalatroJokers.BalatroJokersCode.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class EightBall() : BalatroJokersRelic, IChance
+public class EightBall() : BalatroJokersRelic, IChance, ITarot
 {
     private int _cardsPlayedThisTurn;
     private int _triggerCount;
@@ -67,22 +67,7 @@ public class EightBall() : BalatroJokersRelic, IChance
         this.InvokeDisplayAmountChanged();
     }
 
-    public override Task AfterPotionUsed(PotionModel potion, Creature? target)
-    {
-        if (potion.Owner != Owner || potion is TheFool)
-            return Task.CompletedTask;
-
-        bool valid =
-            ModelDb.PotionPool<BalatroJokersTarotPotionPool>()
-                .AllPotions.Contains(potion.CanonicalInstance)
-            || ModelDb.PotionPool<BalatroJokersPlanetPotionPool>()
-                .AllPotions.Contains(potion.CanonicalInstance);
-
-        if (valid)
-            TarotHistory.LastUsed[Owner] = potion.CanonicalInstance.Id;
-
-        return Task.CompletedTask;
-    }
+    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdateTarotHistory(potion, target?.Player);
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -95,9 +80,7 @@ public class EightBall() : BalatroJokersRelic, IChance
             if (this.RollChance(Owner, DynamicVars["Denominator"].IntValue))
             {
                 Flash();
-                var tarots = ModelDb.PotionPool<BalatroJokersTarotPotionPool>().AllPotions.ToList();
-                var randomTarot = Owner.RunState.Rng.CombatPotionGeneration.NextItem(tarots);
-                PotionProcureResult procure = await PotionCmd.TryToProcure(randomTarot?.ToMutable(), Owner);
+                PotionProcureResult procure = await this.CreateTarot(Owner);
                 _triggerCount++;
             }
         }
