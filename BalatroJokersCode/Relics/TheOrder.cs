@@ -93,6 +93,7 @@ public class TheOrder() : BalatroJokersRelic
         {
             if (PowerApplied) return;
             
+            Flash();
             PowerApplied = true;
             TheOrderPower? theOrderPower = await PowerCmd.Apply<TheOrderPower>(
                 new ThrowingPlayerChoiceContext(),

@@ -147,6 +147,7 @@ public class TheTribe() : BalatroJokersRelic
 
         if (CardsPlayed == 3 && !PowerApplied)
         {
+            Flash();
             PowerApplied = true;
             TheTribePower? theTribePower = await PowerCmd.Apply<TheTribePower>(
                 new ThrowingPlayerChoiceContext(),
