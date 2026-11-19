@@ -16,8 +16,7 @@ public static class TarotMethods
 {
     public static Task UpdateTarotHistory(this ITarot _, PotionModel potion, Player player)
     {
-        if (potion.Owner != player || potion is TheFool)
-            return Task.CompletedTask;
+        if (player is null || potion.Owner != player || potion is TheFool) return Task.CompletedTask;
 
         bool valid =
             ModelDb.PotionPool<BalatroJokersTarotPotionPool>()
