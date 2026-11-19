@@ -18,7 +18,7 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 public class Splash() : BalatroJokersRelic
 {
     private int _cardsPlayedThisTurn;
-    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    public override RelicRarity Rarity => RelicRarity.Common;
 
     public override bool ShowCounter => CombatManager.Instance.IsInProgress;
 
@@ -71,6 +71,7 @@ public class Splash() : BalatroJokersRelic
         Creature target = this.Owner.RunState.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) this.Owner.Creature.CombatState.HittableEnemies);
         if (target == null)
             return;
+        Flash();
         VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
         
         DamageVar damage = new DamageVar((Decimal) this.CardsPlayedThisTurn, ValueProp.Unpowered);
