@@ -94,6 +94,7 @@ public class EightBall() : BalatroJokersRelic, IChance
         {
             if (this.RollChance(Owner, DynamicVars["Denominator"].IntValue))
             {
+                Flash();
                 var tarots = ModelDb.PotionPool<BalatroJokersTarotPotionPool>().AllPotions.ToList();
                 var randomTarot = Owner.RunState.Rng.CombatPotionGeneration.NextItem(tarots);
                 PotionProcureResult procure = await PotionCmd.TryToProcure(randomTarot?.ToMutable(), Owner);
