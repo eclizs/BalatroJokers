@@ -67,7 +67,7 @@ public class EightBall() : BalatroJokersRelic, IChance, ITarot
         this.InvokeDisplayAmountChanged();
     }
 
-    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdateTarotHistory(potion, target?.Player);
+    public override Task AfterPotionUsed(PotionModel potion, Creature? target) => this.UpdateTarotHistory(potion, Owner);
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
