@@ -20,6 +20,8 @@ public class JokerStencil() : BalatroJokersRelic
 
     private int _lastHandCount;
     
+    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    
     private bool PowerApplied
     {
         get => _powerApplied;
@@ -48,6 +50,7 @@ public class JokerStencil() : BalatroJokersRelic
 
         if (!PowerApplied)
         {
+            Flash();
             PowerApplied = true;
             JokerStencilPower? jokerStencilPower1 = await PowerCmd.Apply<JokerStencilPower>(
                 new ThrowingPlayerChoiceContext(),
@@ -67,7 +70,6 @@ public class JokerStencil() : BalatroJokersRelic
         );
     }
     
-    public override RelicRarity Rarity => RelicRarity.Rare;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
