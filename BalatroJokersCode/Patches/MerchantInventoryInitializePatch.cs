@@ -16,7 +16,7 @@ static class MerchantInventoryInitializePatch
         foreach (var astronomer in inventory.Player.Relics.OfType<Astronomer>())
             astronomer.PopulateFreeEntries(inventory);
         
-        if (!CreditCard.IsActive(inventory.Player))
+        if (CreditCard.GetGoldAmount(inventory.Player) == 0)
             return;
         
         dialogue = MerchantDialogueSet.CreateFromLocStrings(

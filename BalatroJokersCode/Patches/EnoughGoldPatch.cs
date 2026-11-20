@@ -12,8 +12,9 @@ class EnoughGoldPatch
     static void Postfix(MerchantEntry __instance, ref object __result)
     {
         Player? player = Traverse.Create(__instance).Field("_player").GetValue<Player>();
-
-        if (player is not null && CreditCard.IsActive(player))
-            __result = __instance.Cost <= player.Gold + 100;
+    
+        var goldAmount = CreditCard.GetGoldAmount(player);
+        if (player is not null && goldAmount > 0)
+            __result = __instance.Cost <= player.Gold + goldAmount;
     }
 }

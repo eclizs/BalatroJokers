@@ -11,14 +11,14 @@ public class CreditCard() : BalatroJokersRelic
 {
     public override RelicRarity Rarity => RelicRarity.Common;
     
-    public static bool IsActive(Player player)
+    public static int GetGoldAmount(Player player)
     {
-        return player.Relics.OfType<CreditCard>().Any(r => !r.IsMelted);
+        return 100 * player.Relics.OfType<CreditCard>().Count(r => !r.IsMelted);
     }
 
     public static int GetAvailableGold(Player player)
     {
-        return player.Gold + (IsActive(player) ? 100 : 0);
+        return player.Gold + GetGoldAmount(player);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(100)];
