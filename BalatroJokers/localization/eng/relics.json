@@ -5,7 +5,7 @@
   "BALATROJOKERS-BLUEPRINT.description": "Upon pickup, obtain {Relic.StringValue:cond:[gold]{Relic}[/gold]|a copy of your last obtained [gold]Relic[/gold]}.",
   "BALATROJOKERS-BLUEPRINT.flavor": "",
   "BALATROJOKERS-BLUEPRINT.title": "Blueprint",
-  "BALATROJOKERS-CAMPFIRE.description": "You can now [gold]Upgrade[/gold] {Cards:plural:a card|[blue]{Cards}[/blue] cards} at [gold]Rest Sites[/gold]",
+  "BALATROJOKERS-CAMPFIRE.description": "You can now [gold]Upgrade[/gold] {Cards:plural:an additional card|[blue]{}[/blue] additional cards} at [gold]Rest Sites[/gold]",
   "BALATROJOKERS-CAMPFIRE.flavor": "",
   "BALATROJOKERS-CAMPFIRE.title": "Campfire",
   "BALATROJOKERS-CREDIT_CARD.description": "Go up to [blue]{Gold}[/blue] [gold]Gold[/gold] in debt.",
