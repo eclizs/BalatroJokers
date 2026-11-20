@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace BalatroJokers.BalatroJokersCode.Patches;
 
@@ -35,13 +36,15 @@ static class SmithRestSiteOptionOnSelectPatch
     private static bool ShouldRequireManualConfirmation(SmithRestSiteOption option)
     {
         Player player = (Player)Traverse.Create(option).Property("Owner").GetValue();
-        return !Campfire.IsActive(player);
+        return Campfire.GetAmount(player) == 1;
     }
 
     private static int GetUpgradeCount(SmithRestSiteOption option)
     {
         Player player = (Player)Traverse.Create(option).Property("Owner").GetValue();
-        return Campfire.IsActive(player) ? Campfire.UpgradeAmount : 1;
+        
+        var upgradeAmount = Campfire.GetAmount(player);
+        return upgradeAmount;
     }
 
     static IEnumerable<CodeInstruction> Transpiler(
@@ -106,13 +109,19 @@ static class RestSiteLocalizationPatch
     static void Postfix(RestSiteOption __instance, ref object __result)
     {
         Player? owner = Traverse.Create(__instance).Property("Owner").GetValue<Player>();
-        MainFile.Logger.Info("Owner is " + owner ?? "null");
-        if (owner is not null && Campfire.IsActive(owner) && __instance is SmithRestSiteOption)
+        
+        var upgradeAmount = Campfire.GetAmount(owner);
+        if (owner is not null && upgradeAmount > 1 && __instance is SmithRestSiteOption)
         {
+            DynamicVarSet dynamicVarSet = new DynamicVarSet([new DynamicVar("UpgradeAmount", upgradeAmount)]);
             __result = new LocString("rest_site_ui",
                 __instance.IsEnabled
                     ? "OPTION_CAMPFIRE_SMITH.description"
                     : $"OPTION_{__instance.OptionId}.descriptionDisabled");
+            
+            dynamicVarSet.AddTo((LocString)__result);
         }
+        
+        
     }
 }

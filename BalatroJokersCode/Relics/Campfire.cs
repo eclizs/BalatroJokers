@@ -10,16 +10,15 @@ namespace BalatroJokers.BalatroJokersCode.Relics;
 [Pool(typeof(SharedRelicPool))]
 public class Campfire() : BalatroJokersRelic
 {
-    public static int UpgradeAmount = 2;
     public override RelicRarity Rarity => RelicRarity.Rare;
     
-    public static bool IsActive(Player player)
+    public static int GetAmount(Player player)
     {
-        return player.Relics.OfType<Campfire>().Any(r => !r.IsMelted);
+        return 1 + player.Relics.OfType<Campfire>().Count(r => !r.IsMelted);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new CardsVar(UpgradeAmount)];
+        [new CardsVar(1)];
 
     public override Task AfterRestSiteSmith(Player player)
     {
