@@ -1,45 +1,38 @@
+using System.Reflection.Emit;
 using BalatroJokers.BalatroJokersCode.Relics;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Gold;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Runs;
 
 namespace BalatroJokers.BalatroJokersCode.Patches;
 
 [HarmonyPatch(typeof(PlayerCmd), nameof(PlayerCmd.LoseGold))]
-class PlayerCmdLoseGoldPatch
+static class PlayerCmdLoseGoldPatch
 {
-    private static void LoseGold(Decimal amount, Player player, GoldLossType goldLossType = GoldLossType.Lost)
+    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        SfxCmd.Play("event:/sfx/ui/gold/gold_1");
-        PlayerMapPointHistoryEntry? entry = player.RunState.CurrentMapPointHistoryEntry?.GetEntry(player.NetId);
-        if (entry != null)
-        {
-            switch (goldLossType)
-            {
-                case GoldLossType.Spent:
-                    entry.GoldSpent += (int) amount;
-                    break;
-                case GoldLossType.Lost:
-                    entry.GoldLost += (int) amount;
-                    break;
-                case GoldLossType.Stolen:
-                    entry.GoldStolen += (int) amount;
-                    entry.MarkLootStolen((int) amount);
-                    break;
-            }
-        }
-        player.Gold = int.Max(-100, player.Gold - (int) amount);
-    }
-    
-    static bool Prefix(ref object __result, Decimal amount, Player player, GoldLossType goldLossType = GoldLossType.Lost)
-    {
-        if (!CreditCard.IsActive(player))
-            return true;
+        var codes = instructions.ToList();
+        var max = AccessTools.Method(typeof(int), nameof(int.Max), [typeof(int), typeof(int)]);
+        var goldSetter = AccessTools.PropertySetter(typeof(Player), nameof(Player.Gold));
+        var clampGold = AccessTools.Method(typeof(PlayerCmdLoseGoldPatch), nameof(ClampGold));
 
-        LoseGold(amount, player, goldLossType);
-        __result = Task.CompletedTask;
-        return false;
+        for (int i = 0; i < codes.Count - 1; i++)
+        {
+            if (!codes[i].Calls(max) || !codes[i + 1].Calls(goldSetter))
+                continue;
+
+            codes[i].opcode = OpCodes.Ldarg_1;
+            codes[i].operand = null;
+            codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, clampGold));
+            return codes;
+        }
+
+        throw new InvalidOperationException("Could not find the gold clamp in PlayerCmd.LoseGold.");
+    }
+
+    private static int ClampGold(int minimum, int gold, Player player)
+    {
+        var goldAmount = CreditCard.GetGoldAmount(player);
+        return int.Max(goldAmount > 0 ? -goldAmount : minimum, gold);
     }
 }
