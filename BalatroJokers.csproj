@@ -62,7 +62,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="BalatroJokersCode\Potions\Planet\" />
         <Folder Include="BalatroJokers\images\card_portraits\big\"/>
         <Folder Include="BalatroJokers\images\enchantments\" />
         <Folder Include="BalatroJokers\images\potions\" />
