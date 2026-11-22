@@ -9,8 +9,8 @@ public class Pluto() : BalatroJokersPlanetPotion
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
 
-    protected override IEnumerable<CardModel> GetCardsForUpgrade()
+    protected override IEnumerable<CardModel>? GetCardsForUpgrade()
     {
-        return PileType.Deck.GetPile(this.Owner).Cards.ToList().StableShuffle(Owner.PlayerRng.NonCombatGeneration).Take(DynamicVars.Cards.IntValue);
+        return PileType.Deck.GetPile(Owner).Cards.Where(c => c is { IsUpgradable: true }).ToList().StableShuffle(Owner.PlayerRng.NonCombatGeneration).Take(DynamicVars.Cards.IntValue);
     }
 }
