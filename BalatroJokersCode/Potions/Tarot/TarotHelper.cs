@@ -73,6 +73,8 @@ public abstract class TransformingTarot : BalatroJokersTarotPotion
         new CardsVar(CardAmount)
     ];
 
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Transform)];
+
     protected virtual bool CardIsValid(CardModel card) => card.Type == TransformType;
 
     protected virtual CardModel GetCanonicalForTransform(CardModel original)
