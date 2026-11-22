@@ -57,5 +57,8 @@
   "BALATROJOKERS-JUDGEMENT.title": "Judgement",
   "BALATROJOKERS-THE_WORLD.description": "Permanently [gold]Transform[/gold] {Cards:a card|up to [blue]{}[/blue] cards} in your [gold]Hand[/gold] into {Cards:plural:a random colorless card|random colorless cards}.",
   "BALATROJOKERS-THE_WORLD.selectionScreenPrompt": "Choose a card to [gold]Transform[/gold].",
-  "BALATROJOKERS-THE_WORLD.title": "The World"
+  "BALATROJOKERS-THE_WORLD.title": "The World",
+
+  "BALATROJOKERS-PLUTO.description": "Permanently [gold]Upgrade[/gold] a random card in your [gold]Deck[/gold].",
+  "BALATROJOKERS-PLUTO.title": "Pluto"
 }
