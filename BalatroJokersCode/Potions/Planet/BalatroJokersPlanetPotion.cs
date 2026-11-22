@@ -16,11 +16,12 @@ public abstract class BalatroJokersPlanetPotion : BalatroJokersPotion
     public override PotionUsage Usage => PotionUsage.AnyTime;
     public override TargetType TargetType => TargetType.Self;
 
-    protected abstract IEnumerable<CardModel> GetCardsForUpgrade();
+    protected abstract IEnumerable<CardModel>? GetCardsForUpgrade();
 
     protected override Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         var cardModels = GetCardsForUpgrade();
+        if (cardModels == null) return Task.CompletedTask;
         foreach (CardModel card in cardModels)
             CardCmd.Upgrade(card, CardPreviewStyle.GridLayout);
         return Task.CompletedTask;
