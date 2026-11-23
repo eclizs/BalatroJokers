@@ -11,6 +11,6 @@ public class Pluto() : BalatroJokersPlanetPotion
 
     protected override IEnumerable<CardModel>? GetCardsForUpgrade()
     {
-        return PileType.Deck.GetPile(Owner).Cards.Where(c => c is { IsUpgradable: true }).ToList().StableShuffle(Owner.PlayerRng.NonCombatGeneration).Take(DynamicVars.Cards.IntValue);
+        return PileType.Deck.GetPile(Owner).Cards.Where(c => c is { MaxUpgradeLevel: > 0 }).ToList().StableShuffle(Owner.PlayerRng.NonCombatGeneration).Take(DynamicVars.Cards.IntValue);
     }
 }
