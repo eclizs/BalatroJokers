@@ -59,6 +59,8 @@
   "BALATROJOKERS-THE_WORLD.selectionScreenPrompt": "Choose a card to [gold]Transform[/gold].",
   "BALATROJOKERS-THE_WORLD.title": "The World",
 
-  "BALATROJOKERS-PLUTO.description": "Permanently [gold]Upgrade[/gold] a random card in your [gold]Deck[/gold].",
-  "BALATROJOKERS-PLUTO.title": "Pluto"
+  "BALATROJOKERS-PLUTO.description": "Permanently [gold]Upgrade[/gold] {Cards:plural:a random card|[blue]{}[/blue] random cards} in your [gold]Deck[/gold].",
+  "BALATROJOKERS-PLUTO.title": "Pluto",
+  "BALATROJOKERS-MERCURY.description": "Permanently [gold]Upgrade[/gold] {Cards:plural:a random card|[blue]{}[/blue] random cards} of the same type or rarity.",
+  "BALATROJOKERS-MERCURY.title": "Mercury"
 }
