@@ -16,7 +16,7 @@ public class Wild() : BalatroJokersEnchantment
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Transform)];
 
-    private CardModel? GetCardForTransform(Player? player)
+    private static CardModel? GetCardForTransform(Player? player)
     {
         if (player == null) return null;
         var pool = player.UnlockState.CardPools.ToList();
