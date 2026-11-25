@@ -2,7 +2,7 @@
   "BALATROJOKERS-TAROT.title": "Tarot",
   "BALATROJOKERS-TAROT.description": "Special potions created through certain [gold]Jokers[/gold] that grant various effects.",
   "BALATROJOKERS-PLANET.title": "Planet",
-  "BALATROJOKERS-PLANET.description": "Special potions created through certain [gold]Jokers[/gold] that [gold]Upgrades[/gold] certain cards.",
+  "BALATROJOKERS-PLANET.description": "Special potions created through certain [gold]Jokers[/gold] that [gold]Upgrades[/gold] certain cards. Able to [gold]Upgrade[/gold] already [gold]Upgraded[/gold] cards.",
   "BALATROJOKERS-JOKER.title": "Joker",
   "BALATROJOKERS-JOKER.description": "Relics from the BalatroJokers mod."
 }
